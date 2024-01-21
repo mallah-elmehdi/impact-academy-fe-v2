@@ -1,8 +1,12 @@
-import { Box, Fade } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { useScrollToTop } from '../../hooks';
 
 const Base = () => {
+    // scroll to top when page changes
+    useScrollToTop();
+
     return (
         <Box
             sx={(theme) => ({
@@ -14,11 +18,7 @@ const Base = () => {
                 position: 'relative',
             })}
         >
-            <Fade in={true} timeout={500}>
-                <Box>
-                    <Outlet />
-                </Box>
-            </Fade>
+            <Outlet />
         </Box>
     );
 };

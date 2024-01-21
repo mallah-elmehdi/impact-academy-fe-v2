@@ -6,9 +6,9 @@ import ImageWhite from '../../assets/brand/logo-white.png';
 import { Link } from '../../components';
 import { PAGES } from '../../constants/pages';
 
-const Logo = ({ white, lg }) => {
+const Logo = ({ white, lg, ...props }) => {
     return (
-        <Link to={PAGES.landing.url}>
+        <Link to={PAGES.logIn.url} sx={{ ...props }}>
             <Avatar
                 variant="square"
                 src={white ? ImageWhite : Image}
