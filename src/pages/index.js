@@ -5,6 +5,8 @@ export { default as LogIn } from './LogIn';
 
 // ========== PARTICIPANT PAGES
 export { default as Participant } from './Participant';
+export { default as ParticipantHome } from './Participant/Home';
+export { default as ParticipantProfile } from './Participant/Profile';
 
 // ========== MENTOR PAGES
 export { default as Mentor } from './Mentor';

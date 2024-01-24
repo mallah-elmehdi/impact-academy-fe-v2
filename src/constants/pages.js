@@ -12,6 +12,12 @@ export const PAGES = {
     participant: {
         url: '/participant',
     },
+    participantHome: {
+        url: 'accueil',
+    },
+    participantProfile: {
+        url: 'profile',
+    },
 
     // mentor
     mentor: {
@@ -22,7 +28,6 @@ export const PAGES = {
     admin: {
         url: '/admin',
     },
-
 
     notFound: {
         title: 'Oops!',

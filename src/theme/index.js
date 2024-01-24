@@ -15,7 +15,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: "'Barlow', sans-serif",
+        fontFamily: "'Space Grotesk', sans-serif",
     },
     fontFamily: {
         arabic: {

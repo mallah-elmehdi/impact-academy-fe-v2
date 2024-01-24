@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { PAGES } from '../constants/pages';
-import { Admin, Base, LogIn, Mentor, Participant } from '../pages';
+import { Admin, Base, LogIn, Mentor, Participant, ParticipantHome, ParticipantProfile } from '../pages';
 
 export default createBrowserRouter([
     {
@@ -22,6 +22,17 @@ export default createBrowserRouter([
             {
                 path: PAGES.participant.url,
                 element: <Participant />,
+                children: [
+                    {
+                        path: PAGES.participantHome.url,
+                        element: <ParticipantHome />,
+                        index: true,
+                    },
+                    {
+                        path: PAGES.participantProfile.url,
+                        element: <ParticipantProfile />,
+                    },
+                ],
             },
 
             // -------------- MENTOR
