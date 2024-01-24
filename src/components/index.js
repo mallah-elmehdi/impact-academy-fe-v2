@@ -11,3 +11,5 @@ export { default as Navbar } from './Navbar';
 export { default as DashboardTitle } from './DashboardTitle';
 export { default as IconText } from './IconText';
 export { default as FormDialog } from './FormDialog';
+export { default as Files } from './Files';
+export { default as Footer } from './Footer';
