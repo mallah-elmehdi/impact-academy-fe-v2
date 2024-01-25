@@ -24,7 +24,7 @@ const Navbar = ({ navbarItems }) => {
             })}
         >
             <Container sx={{ px: 0 }}>
-                <Toolbar sx={{ '&.MuiToolbar-root': { px: 0 }, py: 3 }}>
+                <Toolbar sx={{ py: 3 }}>
                     {md ? <Desktop sticky={sticky} navbarItems={navbarItems} /> : <Mobile sticky={sticky} navbarItems={navbarItems} />}
                 </Toolbar>
             </Container>

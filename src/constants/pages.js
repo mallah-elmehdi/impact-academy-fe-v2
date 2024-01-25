@@ -18,6 +18,13 @@ export const PAGES = {
     participantProfile: {
         url: 'profile',
     },
+    participantQuiz: {
+        url: 'quiz',
+    },
+    participantEvaluation: {
+        url: 'evaluation',
+    },
+
 
     // mentor
     mentor: {

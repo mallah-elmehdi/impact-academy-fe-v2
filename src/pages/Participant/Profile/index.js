@@ -2,7 +2,7 @@ import { Box, Grid, Stack, Typography, Divider } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Card, Files } from '../../../components';
-import { PROFILE_PERSONNEL, PROFILE_PROFESSIONAL } from '../../../constants/student';
+import { PROFILE_PERSONNEL, PROFILE_PROFESSIONAL } from '../../../constants/participant';
 import Header from './Header';
 import InfoPersonnel from './InfoPersonnel';
 import InfoProfessional from './InfoProfessional';

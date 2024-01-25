@@ -2,7 +2,7 @@ import { Autocomplete, Box, IconButton, InputAdornment } from '@mui/material';
 import React, { useState } from 'react';
 import { BsMortarboard, BsX } from 'react-icons/bs';
 import { Input } from '../../../../components';
-import { JOB_DOMAIN } from '../../../../constants/student';
+import { JOB_DOMAIN } from '../../../../constants/participant';
 
 const Other = ({ field, errors, setValue }) => {
     const [autre, setAutre] = useState();

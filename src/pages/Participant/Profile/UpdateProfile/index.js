@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, FormDialog, Input } from '../../../../components';
-import { EDUCATION_LEVEL, JOB_DOMAIN, ORIENTATION, ZONE } from '../../../../constants/student';
+import { EDUCATION_LEVEL, JOB_DOMAIN, ORIENTATION, ZONE } from '../../../../constants/participant';
 import { BsEnvelope, BsGeoAlt, BsMortarboard, BsPerson, BsPhone } from 'react-icons/bs';
 import Other from './Other';
 

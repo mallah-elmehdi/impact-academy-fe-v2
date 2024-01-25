@@ -1,7 +1,8 @@
 import { Box, IconButton, Stack } from '@mui/material';
 import React from 'react';
-import { BlurredButton, Dialog, Logo } from '../../components';
+import { BlurredButton, Dialog, Link, Logo } from '../../components';
 import { BsList, BsX } from 'react-icons/bs';
+import LogOutButton from './LogOutButton';
 
 // ========== MENU TRANSITION
 const Mobile = ({ sticky, selected, navbarItems }) => {
@@ -12,12 +13,9 @@ const Mobile = ({ sticky, selected, navbarItems }) => {
 
     return (
         <>
-            <Logo md={!sticky} white={!sticky} square />
+            <Logo white square />
             <Box ml="auto" gap={3} display="flex" alignItems="center" justifyContent="center">
-                <IconButton
-                    sx={(theme) => ({ color: !sticky ? theme.palette.common.white : theme.palette.primary.main })}
-                    onClick={handleClickOpen}
-                >
+                <IconButton sx={(theme) => ({ color: theme.palette.common.white })} onClick={handleClickOpen}>
                     <BsList />
                 </IconButton>
             </Box>
@@ -49,20 +47,26 @@ const Mobile = ({ sticky, selected, navbarItems }) => {
                             display: 'flex',
                             gap: 3,
                             flexDirection: 'column',
+                            alignItems: 'flex-start',
                         }}
                     >
-                        {navbarItems.map((page, index) => (
-                            <BlurredButton
-                                key={page.id}
-                                sx={(theme) => ({
-                                    color: theme.palette.primary.main,
-                                    fontSize: theme.fontSize['3xl'],
-                                })}
-                            >
-                                {page.title}
-                            </BlurredButton>
+                        {navbarItems.map((page) => (
+                            <Link to={page.url} key={page.id}>
+                                <BlurredButton
+                                    onClick={handleClose}
+                                    sx={{
+                                        color: (theme) => theme.palette.primary.main,
+                                        fontSize: (theme) => theme.fontSize['xl'],
+                                    }}
+                                >
+                                    {page.title}
+                                </BlurredButton>
+                            </Link>
                         ))}
                     </Box>
+                    <Stack>
+                        <LogOutButton />
+                    </Stack>
                 </Box>
             </Dialog>
         </>

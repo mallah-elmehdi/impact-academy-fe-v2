@@ -1,7 +1,7 @@
 import { Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Card } from '../../../components';
-import { PROFILE_PROFESSIONAL } from '../../../constants/student';
+import { PROFILE_PROFESSIONAL } from '../../../constants/participant';
 
 const InfoProfessional = () => {
     const profile = null;

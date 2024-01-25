@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { PAGES } from '../constants/pages';
-import { Admin, Base, LogIn, Mentor, Participant, ParticipantHome, ParticipantProfile } from '../pages';
+import { Admin, Base, LogIn, Mentor, Participant, ParticipantEvaluation, ParticipantHome, ParticipantProfile } from '../pages';
 
 export default createBrowserRouter([
     {
@@ -31,6 +31,10 @@ export default createBrowserRouter([
                     {
                         path: PAGES.participantProfile.url,
                         element: <ParticipantProfile />,
+                    },
+                    {
+                        path: PAGES.participantEvaluation.url,
+                        element: <ParticipantEvaluation />,
                     },
                 ],
             },

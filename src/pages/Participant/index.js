@@ -10,7 +10,7 @@ const Participant = () => {
         <ProtectionParticipant>
             <DashboardWrap>
                 <Navbar navbarItems={PARTICIPANT_NAVBAR} />
-                <Container sx={{ py: 3 }}>
+                <Container sx={{ py: 3, flexGrow: 1 }}>
                     <Stack spacing={3}>
                         <DashboardTitle navbarItems={PARTICIPANT_NAVBAR} />
                         <Outlet />

@@ -3,7 +3,7 @@ import { Button } from '..';
 import { alpha } from '@mui/material';
 import { PAGES } from '../../constants/pages';
 
-const BlurredButton = ({ children, ...props }) => {
+const BlurredButton = ({ children, sx, ...props }) => {
     return (
         <Button
             sx={(theme) => ({
@@ -14,6 +14,7 @@ const BlurredButton = ({ children, ...props }) => {
                 '&:hover': {
                     background: alpha(theme.palette.common.white, 0.25),
                 },
+                ...sx,
             })}
             {...props}
         >

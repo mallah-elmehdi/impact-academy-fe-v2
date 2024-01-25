@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import React from 'react';
 import WavesBg from '../../assets/backgrounds/waves.png';
 
@@ -7,10 +7,15 @@ const DashboardWrap = ({ children }) => {
         <Box
             sx={(theme) => ({
                 backgroundColor: theme.palette.muted.main,
-                minHeight: '100vh',
             })}
         >
-            <Box sx={(theme) => ({})}>{children}</Box>
+            <Stack
+                sx={(theme) => ({
+                    minHeight: '100vh',
+                })}
+            >
+                {children}
+            </Stack>
         </Box>
     );
 };
