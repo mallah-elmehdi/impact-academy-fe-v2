@@ -2,8 +2,8 @@ import { Box, Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/mater
 import React from 'react';
 import { BsGeoAlt, BsPerson } from 'react-icons/bs';
 import { Button, Card, IconText } from '../../../components';
-import ProgressLevel from './ProgressLevel';
 import UpdateProfile from './UpdateProfile';
+import { ProgressLevel } from '../../../components';
 
 const Header = () => {
     const md = useMediaQuery((theme) => theme.breakpoints.up('md'));
@@ -21,7 +21,7 @@ const Header = () => {
                         >
                             Complétez votre profil
                         </Typography>
-                        <ProgressLevel value={40} />
+                        <ProgressLevel color="secondary" value={40} />
                     </Stack>
                 </Grid>
                 <Grid item md={0.25} xs={12}>

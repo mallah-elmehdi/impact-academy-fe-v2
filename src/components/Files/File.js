@@ -1,6 +1,7 @@
 import { Alert, Box, IconButton } from '@mui/material';
 import React from 'react';
 import { BsArrowDown, BsEye, BsFileEarmark } from 'react-icons/bs';
+import FilledIconButton from '../FilledIconButton';
 
 const File = () => {
     // ----
@@ -21,34 +22,12 @@ const File = () => {
             >
                 Cv.pdf
             </Alert>
-            <IconButton
-                onClick={handleOpenFile}
-                sx={(theme) => ({
-                    fontSize: theme.fontSize.md,
-                    backgroundColor: theme.palette.primary.light_main,
-                    color: theme.palette.common.white,
-                    '&:hover': {
-                        backgroundColor: theme.palette.primary.light_main,
-                        color: theme.palette.common.white,
-                    },
-                })}
-            >
+            <FilledIconButton color="primary" white onClick={handleOpenFile}>
                 <BsEye />
-            </IconButton>
-            <IconButton
-                onClick={handleOpenFile}
-                sx={(theme) => ({
-                    fontSize: theme.fontSize.md,
-                    backgroundColor: theme.palette.primary.light_main,
-                    color: theme.palette.common.white,
-                    '&:hover': {
-                        backgroundColor: theme.palette.primary.light_main,
-                        color: theme.palette.common.white,
-                    },
-                })}
-            >
+            </FilledIconButton>
+            <FilledIconButton color="primary" white onClick={handleOpenFile}>
                 <BsArrowDown />
-            </IconButton>
+            </FilledIconButton>
         </Box>
     );
 };

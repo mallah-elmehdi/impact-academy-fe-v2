@@ -5,6 +5,7 @@ const IconText = ({ icon, text }) => {
     return (
         <Box display="flex" alignItems="center" gap={0.5}>
             <Avatar
+                variant="square"
                 sx={(theme) => ({
                     color: theme.palette.primary.light_main,
                     background: 'transparent',
