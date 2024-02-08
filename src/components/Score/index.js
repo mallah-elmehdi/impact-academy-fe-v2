@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-const Score = ({ children }) => {
+const Score = ({ children, isRate }) => {
     return (
         <Box display="flex" alignItems="flex-end">
             <Typography
@@ -23,7 +23,7 @@ const Score = ({ children }) => {
                     lineHeight: 1,
                 })}
             >
-                /5
+                {isRate ? '%' : '/5'}
             </Typography>
         </Box>
     );

@@ -1,20 +1,11 @@
-import { Avatar, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { IconAvatar } from '..';
 
 const IconText = ({ icon, text }) => {
     return (
         <Box display="flex" alignItems="center" gap={0.5}>
-            <Avatar
-                variant="square"
-                sx={(theme) => ({
-                    color: theme.palette.primary.light_main,
-                    background: 'transparent',
-                    width: 22,
-                    height: 22,
-                })}
-            >
-                {icon}
-            </Avatar>
+            <IconAvatar>{icon}</IconAvatar>
             <Typography
                 sx={(theme) => ({
                     fontSize: theme.fontSize.md,

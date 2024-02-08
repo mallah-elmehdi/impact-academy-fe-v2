@@ -2,7 +2,7 @@ import { Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { BsBoxArrowInUp, BsEasel, BsMortarboard } from 'react-icons/bs';
 import { Button, Card, EvaluationDetails, IconText, ProgressLevel, Score } from '../../../components';
-import { ScoreLevel, calculateTheScoreEvaluation } from '../../../utils/functions';
+import { scoreLevel, calculateTheScoreEvaluation } from '../../../utils/functions';
 
 const LevelColor = (value) => {
     if (value > 60) {
@@ -162,7 +162,7 @@ const Evaluation = () => {
                 const valueInsertion = calculateTheScoreEvaluation(item.evaluation.insertion);
                 const valueFormation = calculateTheScoreEvaluation(item.evaluation.formation);
                 const valueCoaching = calculateTheScoreEvaluation(item.evaluation.coaching);
-                const globalValue = ScoreLevel((valueInsertion + valueFormation + valueCoaching) / 3);
+                const globalValue = scoreLevel((valueInsertion + valueFormation + valueCoaching) / 3);
 
                 return (
                     <Card key={item.bootcamp}>

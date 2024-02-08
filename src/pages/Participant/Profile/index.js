@@ -1,20 +1,13 @@
 import { Box, Grid, Stack, Typography, Divider } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Card, Files } from '../../../components';
+import { Card, DividerLine, Files } from '../../../components';
 import { PROFILE_PERSONNEL, PROFILE_PROFESSIONAL } from '../../../constants/participant';
 import Header from './Header';
 import InfoPersonnel from './InfoPersonnel';
 import InfoProfessional from './InfoProfessional';
 
 const Profile = () => {
-    // ========== DIALOG OPEN/CLOSE
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const profile = null;
-
     const {
         formState: { errors },
         handleSubmit,
@@ -43,24 +36,6 @@ const Profile = () => {
         event.preventDefault();
     };
 
-    // ======= download cv
-    const [filename, setFilename] = useState(null);
-    const [file, setFile] = useState(null);
-    const handleFileSelected = (e) => {
-        if (e.target.files) {
-            const data = new FormData();
-            data.append('CV', e.target.files[0]);
-            setFile(data);
-            setFilename(e.target.files[0].name);
-        }
-    };
-    const handleRemoveFile = () => {
-        setFilename(null);
-        setFile(null);
-    };
-    // ========= cv upload
-    const handleSaveCV = () => {};
-
     return (
         <Box>
             <Grid container spacing={3}>
@@ -74,7 +49,7 @@ const Profile = () => {
                     <InfoProfessional />
                 </Grid>
                 <Grid item xs={12}>
-                    <Divider sx={(theme) => ({ height: '100%', borderColor: theme.palette.secondary.main })} />
+                    <DividerLine color="secondary" />
                 </Grid>
                 <Grid item xs={12}>
                     <Files />

@@ -1,13 +1,10 @@
-import { Box, Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { BsGeoAlt, BsPerson } from 'react-icons/bs';
-import { Button, Card, IconText } from '../../../components';
+import { Card, DividerVertical, IconText, ProgressLevel } from '../../../components';
 import UpdateProfile from './UpdateProfile';
-import { ProgressLevel } from '../../../components';
 
 const Header = () => {
-    const md = useMediaQuery((theme) => theme.breakpoints.up('md'));
-
     return (
         <Card>
             <Grid container spacing={2}>
@@ -25,10 +22,7 @@ const Header = () => {
                     </Stack>
                 </Grid>
                 <Grid item md={0.25} xs={12}>
-                    <Divider
-                        orientation={md ? 'vertical' : 'horizontal'}
-                        sx={(theme) => ({ height: '100%', borderColor: theme.palette.muted.main })}
-                    />
+                    <DividerVertical />
                 </Grid>
                 <Grid item md={7.5} sm={8} xs={12}>
                     <Stack spacing={1}>

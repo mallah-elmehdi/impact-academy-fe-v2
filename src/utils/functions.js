@@ -6,7 +6,7 @@ export const calculateTheScoreEvaluation = (obj) => {
 
     return score / valuesArray.length;
 };
-export const ScoreLevel = (score) => {
+export const scoreLevel = (score) => {
     const level = Math.ceil((score / 5) * 100);
     return level;
 };

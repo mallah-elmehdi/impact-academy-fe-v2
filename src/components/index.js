@@ -20,3 +20,8 @@ export { default as ProgressLevel } from './ProgressLevel';
 export { default as Score } from './Score';
 export { default as EvaluationDetails } from './EvaluationDetails';
 export { default as BorderedCard } from './BorderedCard';
+export { default as DashboardCard } from './DashboardCard';
+export { default as DividerLine } from './DividerLine';
+export { default as DividerVertical } from './DividerVertical';
+export { default as IconAvatar } from './IconAvatar';
+export { default as ButtonLink } from './ButtonLink';
