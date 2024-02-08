@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useTheme } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { BsCheck, BsListCheck, BsQuestion } from 'react-icons/bs';
 import { DashboardCard, Score } from '../../components';
@@ -7,8 +7,6 @@ import EvaluationChart from '../../components/Charts/EvaluationChart';
 import { PAGES } from '../../constants/pages';
 
 const Home = () => {
-    const theme = useTheme();
-
     return (
         <Box>
             <Grid container spacing={5}>
