@@ -15,7 +15,7 @@ const StyledMenu = styled((props) => (
     />
 ))(({ theme }) => ({
     '& .MuiPaper-root': {
-        borderRadius: theme.borderRadius.lg,
+        borderRadius: theme.borderRadius.md,
         padding: theme.spacing(2),
         marginTop: theme.spacing(1),
         color: theme.palette.common.black,
@@ -27,7 +27,7 @@ const StyledMenu = styled((props) => (
         '& .MuiMenuItem-root': {
             padding: theme.spacing(1.5),
             fontSize: theme.fontSize.sm,
-        borderRadius: theme.borderRadius.lg,
+        borderRadius: theme.borderRadius.md,
         '&:active': {
                 backgroundColor: alpha(theme.palette.muted.main, 0.25),
             },

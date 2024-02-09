@@ -20,7 +20,7 @@ const Input = styled((props) => (
     width: '100%',
     '& .MuiFilledInput-root, & .MuiOutlinedInput-root': {
         color: theme.palette.primary.main,
-        borderRadius: theme.borderRadius.xl,
+        borderRadius: theme.borderRadius.md,
         overflow: 'hidden',
         backgroundColor: theme.palette.common.white,
         backdropFilter: theme.blur.primary,

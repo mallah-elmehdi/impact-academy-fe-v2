@@ -21,9 +21,6 @@ export const PAGES = {
     participantQuiz: {
         url: 'quiz',
     },
-    participantQuizDetails: {
-        url: 'quiz/:quizId',
-    },
     participantEvaluation: {
         url: 'evaluation',
     },

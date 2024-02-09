@@ -10,6 +10,7 @@ export { default as ParticipantProfile } from './Participant/Profile';
 export { default as ParticipantEvaluation } from './Participant/Evaluation';
 export { default as ParticipantQuiz } from './Participant/Quiz';
 export { default as ParticipantQuizDetails } from './Participant/Quiz/QuizDetails';
+export { default as ParticipantQuizAnswers } from './Participant/Quiz/QuizAnswers';
 
 // ========== MENTOR PAGES
 export { default as Mentor } from './Mentor';

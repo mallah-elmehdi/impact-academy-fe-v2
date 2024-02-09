@@ -26,3 +26,4 @@ export { default as DividerVertical } from './DividerVertical';
 export { default as IconAvatar } from './IconAvatar';
 export { default as ButtonLink } from './ButtonLink';
 export { default as ScoreCard } from './ScoreCard';
+export { default as NumberIcon } from './NumberIcon';

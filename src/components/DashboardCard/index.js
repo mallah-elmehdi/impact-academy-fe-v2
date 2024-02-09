@@ -1,30 +1,25 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { ButtonLink, Card, DividerLine, IconAvatar } from '..';
+import { Card, DividerLine, IconAvatar } from '..';
 
-const DashboardCard = ({ children, title, icon, url, noAction }) => {
+const DashboardCard = ({ icon, children, title, action, height }) => {
     return (
         <Card sx={{ p: 0 }}>
             <Stack alignItems="stretch">
                 <Box p={3} display="flex" alignItems="center" gap={1}>
-                    <IconAvatar>{icon}</IconAvatar>
+                    {icon}
                     <Typography
                         sx={(theme) => ({
                             fontSize: theme.fontSize.md,
-                            // fontWeight: theme.fontWeight.bold,
                             color: theme.palette.common.black,
                         })}
                     >
                         {title}
                     </Typography>
-                    {!noAction && (
-                        <ButtonLink sx={{ ml: 'auto' }} to={url}>
-                            voir plus
-                        </ButtonLink>
-                    )}
+                    {action && <Box sx={{ ml: 'auto' }}>{action}</Box>}
                 </Box>
                 <DividerLine color="muted" />
-                <Box p={3} height={500}>
+                <Box p={3} height={height ? height : '100%'}>
                     {children}
                 </Box>
             </Stack>

@@ -10,6 +10,7 @@ import {
     ParticipantHome,
     ParticipantProfile,
     ParticipantQuiz,
+    ParticipantQuizAnswers,
     ParticipantQuizDetails,
 } from '../pages';
 
@@ -52,8 +53,12 @@ export default createBrowserRouter([
                         element: <ParticipantQuiz />,
                     },
                     {
-                        path: PAGES.participantQuizDetails.url,
+                        path: PAGES.participantQuiz.url + '/:quizId',
                         element: <ParticipantQuizDetails />,
+                    },
+                    {
+                        path: PAGES.participantQuiz.url + '/:quizId/answers',
+                        element: <ParticipantQuizAnswers />,
                     },
                 ],
             },
