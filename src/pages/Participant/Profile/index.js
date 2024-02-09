@@ -1,8 +1,8 @@
-import { Box, Grid, Stack, Typography, Divider } from '@mui/material';
-import React, { useState } from 'react';
+import { Box, Grid } from '@mui/material';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Card, DividerLine, Files } from '../../../components';
-import { PROFILE_PERSONNEL, PROFILE_PROFESSIONAL } from '../../../constants/participant';
+import { DashboardTitle, DividerLine, Files } from '../../../components';
+import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
 import Header from './Header';
 import InfoPersonnel from './InfoPersonnel';
 import InfoProfessional from './InfoProfessional';
@@ -39,6 +39,9 @@ const Profile = () => {
     return (
         <Box>
             <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <DashboardTitle>{PARTICIPANT_NAVBAR[1].title}</DashboardTitle>
+                </Grid>
                 <Grid item xs={12}>
                     <Header />
                 </Grid>

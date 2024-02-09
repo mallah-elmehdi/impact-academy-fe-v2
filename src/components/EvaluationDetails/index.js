@@ -55,7 +55,7 @@ const EvaluationDetails = ({ bootcamp, data }) => {
                     </Box>
                 </DialogTitle>
                 <DialogContent sx={{ '&.MuiDialogContent-root': { p: 3, overflow: 'auto', width: '100%' } }}>
-                    <Stack spacing={5}>
+                    <Stack spacing={3}>
                         <Stack spacing={3}>
                             <IconText icon={<BsEasel />} text="Formation" />
                             <TableContainer component={BorderedCard}>

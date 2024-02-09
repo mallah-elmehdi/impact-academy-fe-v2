@@ -1,15 +1,19 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { BsCheck, BsListCheck, BsQuestion } from 'react-icons/bs';
-import { DashboardCard, Score } from '../../components';
+import { DashboardCard, DashboardTitle, Score } from '../../components';
 import { PresenceChart, QuizChart } from '../../components/Charts';
 import EvaluationChart from '../../components/Charts/EvaluationChart';
 import { PAGES } from '../../constants/pages';
+import { PARTICIPANT_NAVBAR } from '../../constants/participant';
 
 const Home = () => {
     return (
         <Box>
-            <Grid container spacing={5}>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <DashboardTitle>{PARTICIPANT_NAVBAR[0].title}</DashboardTitle>
+                </Grid>
                 <Grid item xs={12}>
                     <DashboardCard
                         icon={<BsCheck />}

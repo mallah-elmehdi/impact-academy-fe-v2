@@ -1,7 +1,7 @@
-import { Container, Stack } from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { DashboardTitle, DashboardWrap, Footer, Navbar } from '../../components';
+import { DashboardWrap, Footer, Navbar } from '../../components';
 import { PARTICIPANT_NAVBAR } from '../../constants/participant';
 import ProtectionParticipant from './ProtectionParticipant';
 
@@ -10,11 +10,8 @@ const Participant = () => {
         <ProtectionParticipant>
             <DashboardWrap>
                 <Navbar navbarItems={PARTICIPANT_NAVBAR} />
-                <Container sx={{ py: 3, flexGrow: 1 }}>
-                    <Stack spacing={3}>
-                        <DashboardTitle navbarItems={PARTICIPANT_NAVBAR} />
-                        <Outlet />
-                    </Stack>
+                <Container sx={{ p: 3, flexGrow: 1 }}>
+                    <Outlet />
                 </Container>
                 <Footer />
             </DashboardWrap>

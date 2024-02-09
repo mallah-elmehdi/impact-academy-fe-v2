@@ -1,8 +1,9 @@
-import { Divider, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Stack } from '@mui/material';
 import React from 'react';
-import { BsBoxArrowInUp, BsEasel, BsMortarboard } from 'react-icons/bs';
-import { Button, Card, EvaluationDetails, IconText, ProgressLevel, Score } from '../../../components';
-import { scoreLevel, calculateTheScoreEvaluation } from '../../../utils/functions';
+import { DashboardTitle } from '../../../components';
+import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
+import { calculateTheScoreEvaluation, scoreLevel } from '../../../utils/functions';
+import EvaluationCard from './EvaluationCard';
 
 const LevelColor = (value) => {
     if (value > 60) {
@@ -154,10 +155,9 @@ const data = [
 ];
 
 const Evaluation = () => {
-    const md = useMediaQuery((theme) => theme.breakpoints.up('md'));
-
     return (
         <Stack spacing={3}>
+            <DashboardTitle>{PARTICIPANT_NAVBAR[3].title}</DashboardTitle>
             {data.map((item) => {
                 const valueInsertion = calculateTheScoreEvaluation(item.evaluation.insertion);
                 const valueFormation = calculateTheScoreEvaluation(item.evaluation.formation);
@@ -165,61 +165,15 @@ const Evaluation = () => {
                 const globalValue = scoreLevel((valueInsertion + valueFormation + valueCoaching) / 3);
 
                 return (
-                    <Card key={item.bootcamp}>
-                        <Grid container spacing={2}>
-                            <Grid item md={2} xs={12}>
-                                <Stack sx={{ height: '100%' }} spacing={2}>
-                                    <Typography
-                                        sx={(theme) => ({
-                                            fontSize: theme.fontSize.lg,
-                                            color: theme.palette.common.black,
-                                            fontWeight: theme.fontWeight.semibold,
-                                        })}
-                                    >
-                                        {item.bootcamp}
-                                    </Typography>
-                                    <ProgressLevel
-                                        white={LevelTextColor(globalValue)}
-                                        color={LevelColor(globalValue)}
-                                        value={globalValue}
-                                    />
-                                </Stack>
-                            </Grid>
-                            <Grid item md={0.25} xs={12}>
-                                <Divider
-                                    orientation={md ? 'vertical' : 'horizontal'}
-                                    sx={(theme) => ({ height: '100%', borderColor: theme.palette.muted.main })}
-                                />
-                            </Grid>
-                            <Grid item md={8.5} xs={12}>
-                                <Grid container spacing={2} alignItems="stretch" alignSelf="stretch" height="100%">
-                                    <Grid item md={4} sm={4} xs={12}>
-                                        <Stack spacing={2} justifyContent="space-between" sx={{ height: '100%' }}>
-                                            <IconText icon={<BsEasel />} text="Formation" />
-                                            <Score>{valueFormation}</Score>
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item md={4} sm={4} xs={12}>
-                                        <Stack spacing={2} justifyContent="space-between" sx={{ height: '100%' }}>
-                                            <IconText icon={<BsMortarboard />} text="Coaching" />
-                                            <Score>{valueCoaching}</Score>
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item md={4} sm={4} xs={12}>
-                                        <Stack spacing={2} justifyContent="space-between" sx={{ height: '100%' }}>
-                                            <IconText icon={<BsBoxArrowInUp />} text="Insertion" />
-                                            <Score>{valueInsertion}</Score>
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid item md={1.25} sm={4} xs={12}>
-                                <Stack sx={{ height: '100%' }} justifyContent="center">
-                                    <EvaluationDetails bootcamp={item.bootcamp} data={item.evaluation} />
-                                </Stack>
-                            </Grid>
-                        </Grid>
-                    </Card>
+                    <EvaluationCard
+                        title={item.bootcamp}
+                        evaluation={item.evaluation}
+                        bootcamp={item.bootcamp}
+                        value={globalValue}
+                        scoreCoaching={valueCoaching}
+                        scoreFormation={valueFormation}
+                        scoreInsertion={valueInsertion}
+                    />
                 );
             })}
         </Stack>

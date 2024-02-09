@@ -1,6 +1,17 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { PAGES } from '../constants/pages';
-import { Admin, Base, LogIn, Mentor, Participant, ParticipantEvaluation, ParticipantHome, ParticipantProfile } from '../pages';
+import {
+    Admin,
+    Base,
+    LogIn,
+    Mentor,
+    Participant,
+    ParticipantEvaluation,
+    ParticipantHome,
+    ParticipantProfile,
+    ParticipantQuiz,
+    ParticipantQuizDetails,
+} from '../pages';
 
 export default createBrowserRouter([
     {
@@ -35,6 +46,14 @@ export default createBrowserRouter([
                     {
                         path: PAGES.participantEvaluation.url,
                         element: <ParticipantEvaluation />,
+                    },
+                    {
+                        path: PAGES.participantQuiz.url,
+                        element: <ParticipantQuiz />,
+                    },
+                    {
+                        path: PAGES.participantQuizDetails.url,
+                        element: <ParticipantQuizDetails />,
                     },
                 ],
             },
