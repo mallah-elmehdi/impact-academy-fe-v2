@@ -1,7 +1,8 @@
 import { Grid, Stack } from '@mui/material';
 import React from 'react';
 import { BsBoxArrowInUp, BsEasel, BsMortarboard } from 'react-icons/bs';
-import { EvaluationDetails, IconText, Score, ScoreCard } from '../../../components';
+import { IconText, Score, ScoreCard } from '../../../components';
+import EvaluationDetails from './EvaluationDetails';
 
 const EvaluationCard = ({ title, value, scoreFormation, scoreCoaching, scoreInsertion, evaluation, bootcamp }) => {
     return (

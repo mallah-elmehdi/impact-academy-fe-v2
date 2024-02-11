@@ -1,21 +1,7 @@
-import { FormControlLabel, Grow, Radio, Alert, Stack } from '@mui/material';
+import { Alert, Grow, Stack } from '@mui/material';
 import React from 'react';
+import { BsCheckCircle, BsXCircle } from 'react-icons/bs';
 import { DashboardCard, NumberIcon } from '..';
-import Choice from './Choice';
-import { BsCheckAll, BsCheckCircle, BsXCircle } from 'react-icons/bs';
-// sx={(theme) => ({
-//     '&.MuiFormControlLabel-root': {
-//         borderRadius: theme.borderRadius.md,
-//         background: correct
-//             ? theme.palette.success.main
-//             : answer === index
-//             ? theme.palette.error.main
-//             : 'transparent',
-//     },
-// })}
-// value={choice}
-// label={<Choice>{choice}</Choice>}
-// />
 
 const Answer = ({ question, choses, index, correctAnswer, answer }) => {
     return (

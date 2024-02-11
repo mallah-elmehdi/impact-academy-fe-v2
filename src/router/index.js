@@ -2,6 +2,8 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { PAGES } from '../constants/pages';
 import {
     Admin,
+    AdminGroup,
+    AdminHome,
     Base,
     LogIn,
     Mentor,
@@ -73,6 +75,17 @@ export default createBrowserRouter([
             {
                 path: PAGES.admin.url,
                 element: <Admin />,
+                children: [
+                    {
+                        path: PAGES.adminHome.url,
+                        element: <AdminHome />,
+                        index: true,
+                    },
+                    {
+                        path: PAGES.adminGroup.url,
+                        element: <AdminGroup />,
+                    },
+                ],
             },
 
             // -------------- 404

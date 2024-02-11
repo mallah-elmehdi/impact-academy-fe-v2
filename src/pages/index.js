@@ -17,3 +17,5 @@ export { default as Mentor } from './Mentor';
 
 // ========== ADMIN PAGES
 export { default as Admin } from './Admin';
+export { default as AdminHome } from './Admin/Home';
+export { default as AdminGroup } from './Admin/Group';

@@ -1,4 +1,4 @@
-import { Bs0Circle, BsCheck, BsHouse, BsPerson, BsQuestion } from 'react-icons/bs';
+import { BsCheck, BsHouse, BsPerson, BsQuestion } from 'react-icons/bs';
 import { PAGES } from './pages';
 
 export const PARTICIPANT_NAVBAR = [

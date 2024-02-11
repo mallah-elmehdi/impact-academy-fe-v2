@@ -1,29 +1,22 @@
 import {
     Autocomplete,
-    Box,
     FormControl,
     FormControlLabel,
     FormHelperText,
     FormLabel,
     Grid,
-    IconButton,
     InputAdornment,
     Radio,
     RadioGroup,
 } from '@mui/material';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Button, FormDialog, Input } from '../../../../components';
-import { EDUCATION_LEVEL, JOB_DOMAIN, ORIENTATION, ZONE } from '../../../../constants/participant';
 import { BsEnvelope, BsGeoAlt, BsMortarboard, BsPerson, BsPhone } from 'react-icons/bs';
+import { Button, ButtonDialog, Input } from '../../../../components';
+import { EDUCATION_LEVEL, ORIENTATION, ZONE } from '../../../../constants/participant';
 import Other from './Other';
 
 const UpdateProfile = () => {
-    // ========== DIALOG OPEN/CLOSE
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
     const {
         formState: { errors },
         handleSubmit,
@@ -53,21 +46,16 @@ const UpdateProfile = () => {
     };
 
     return (
-        <>
-            <Button onClick={handleClickOpen}>Modifier le profil</Button>
-            <FormDialog
-                title="Modifier le profil"
-                id="edit-profile-student"
-                open={open}
-                onClose={handleClose}
-                action={
-                    <Button type="submit" form="edit-profile-student">
-                        Modifier
-                    </Button>
-                }
-                onSubmit={handleSubmit(onSubmit)}
-                maxWidth="md"
-            >
+        <ButtonDialog
+            title="Modifier le profil"
+            buttonTitle="Modifier"
+            action={
+                <Button type="submit" form="edit-profile-student">
+                    Modifier
+                </Button>
+            }
+        >
+            <form onSubmit={handleSubmit(onSubmit)} id="edit-profile-student">
                 <Grid container spacing={3}>
                     <Grid item md={6} xs={12}>
                         <Controller
@@ -190,7 +178,7 @@ const UpdateProfile = () => {
                                 <Input
                                     error={errors.phone ? true : false}
                                     {...field}
-                                    helperText={errors.phone ? errors.name.message : ''}
+                                    helperText={errors.phone ? errors.phone.message : ''}
                                     type="number"
                                     label="Téléphone"
                                     placeholder="Téléphone"
@@ -220,7 +208,6 @@ const UpdateProfile = () => {
                         />
                     </Grid>
 
-                    {/* ----------------- */}
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
@@ -409,8 +396,8 @@ const UpdateProfile = () => {
                         />
                     </Grid>
                 </Grid>
-            </FormDialog>
-        </>
+            </form>
+        </ButtonDialog>
     );
 };
 

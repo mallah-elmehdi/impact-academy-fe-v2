@@ -1,14 +1,19 @@
 import MuiTableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableRow from '@mui/material/TableRow';
-import { styled } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material';
 
 export const TableCell = styled(MuiTableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.common.white,
+        backgroundColor: theme.palette.common.white,
+        color: theme.palette.common.black,
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: theme.fontSize.sm,
+    },
+    borderRight: '1px solid',
+    borderColor: theme.palette.muted.main,
+    '&:last-child': {
+        borderRight: 0,
     },
 }));
 
@@ -16,8 +21,7 @@ export const TableRow = styled(MuiTableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.common.white,
     },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
+    '&:last-child td': {
+        borderBottom: 0,
     },
 }));

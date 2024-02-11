@@ -9,7 +9,7 @@ const FormDialog = ({ title, onClose, open, children, action, onSubmit, id, maxW
             <DialogTitle
                 sx={(theme) => ({
                     borderBottom: '1px solid',
-                    borderColor: theme.palette.primary.main,
+                    borderColor: theme.palette.muted.main,
                 })}
             >
                 <Box display="flex" justifyContent="space-between" gap={3}>
@@ -38,7 +38,7 @@ const FormDialog = ({ title, onClose, open, children, action, onSubmit, id, maxW
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderTop: '1px solid',
-                    borderColor: theme.palette.primary.main,
+                    borderColor: theme.palette.muted.main,
                     '&.MuiDialogActions-root': { p: theme.spacing(3) },
                 })}
             >

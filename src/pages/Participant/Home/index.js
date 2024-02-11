@@ -1,11 +1,11 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { BsCheck, BsListCheck, BsQuestion } from 'react-icons/bs';
-import { ButtonLink, DashboardCard, DashboardTitle, IconAvatar, Score } from '../../components';
-import { PresenceChart, QuizChart } from '../../components/Charts';
-import EvaluationChart from '../../components/Charts/EvaluationChart';
-import { PAGES } from '../../constants/pages';
-import { PARTICIPANT_NAVBAR } from '../../constants/participant';
+import { ButtonLink, DashboardCard, DashboardTitle, IconAvatar, Score } from '../../../components';
+import { PresenceChart, QuizChart } from '../../../components/Charts';
+import EvaluationChart from '../../../components/Charts/EvaluationChart';
+import { PAGES } from '../../../constants/pages';
+import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
 
 const Home = () => {
     return (

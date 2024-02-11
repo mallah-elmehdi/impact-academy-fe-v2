@@ -25,7 +25,6 @@ export const PAGES = {
         url: 'evaluation',
     },
 
-
     // mentor
     mentor: {
         url: '/mentor',
@@ -34,6 +33,18 @@ export const PAGES = {
     // admin
     admin: {
         url: '/admin',
+    },
+    adminHome: {
+        url: 'accueil',
+    },
+    adminGroup: {
+        url: 'groupe',
+    },
+    adminUser: {
+        url: 'utilisateur',
+    },
+    adminQuiz: {
+        url: 'quiz',
     },
 
     notFound: {
