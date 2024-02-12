@@ -40,8 +40,11 @@ export const PAGES = {
     adminGroup: {
         url: 'groupe',
     },
-    adminUser: {
-        url: 'utilisateur',
+    adminUserParticipant: {
+        url: 'utilisateur-participant',
+    },
+    adminUserMentor: {
+        url: 'utilisateur-mentor',
     },
     adminQuiz: {
         url: 'quiz',

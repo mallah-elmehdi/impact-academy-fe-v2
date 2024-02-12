@@ -4,6 +4,7 @@ import {
     Admin,
     AdminGroup,
     AdminHome,
+    AdminUserParticipant,
     Base,
     LogIn,
     Mentor,
@@ -13,7 +14,7 @@ import {
     ParticipantProfile,
     ParticipantQuiz,
     ParticipantQuizAnswers,
-    ParticipantQuizDetails,
+    ParticipantQuizDetails
 } from '../pages';
 
 export default createBrowserRouter([
@@ -84,6 +85,10 @@ export default createBrowserRouter([
                     {
                         path: PAGES.adminGroup.url,
                         element: <AdminGroup />,
+                    },
+                    {
+                        path: PAGES.adminUserParticipant.url,
+                        element: <AdminUserParticipant />,
                     },
                 ],
             },

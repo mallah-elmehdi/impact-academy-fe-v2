@@ -3,6 +3,7 @@ import React from 'react';
 import { BlurredButton, Dialog, Link, Logo } from '../../components';
 import { BsList, BsX } from 'react-icons/bs';
 import LogOutButton from './LogOutButton';
+import Menu from './Menu';
 
 // ========== MENU TRANSITION
 const Mobile = ({ sticky, selected, navbarItems }) => {
@@ -50,19 +51,23 @@ const Mobile = ({ sticky, selected, navbarItems }) => {
                             alignItems: 'flex-start',
                         }}
                     >
-                        {navbarItems.map((page) => (
-                            <Link to={page.url} key={page.id}>
-                                <BlurredButton
-                                    onClick={handleClose}
-                                    sx={{
-                                        color: (theme) => theme.palette.primary.main,
-                                        fontSize: (theme) => theme.fontSize['xl'],
-                                    }}
-                                >
-                                    {page.title}
-                                </BlurredButton>
-                            </Link>
-                        ))}
+                        {navbarItems.map((page) =>
+                            page.menu ? (
+                                <Menu mobile key={page.id} {...page} />
+                            ) : (
+                                <Link to={page.url} key={page.id}>
+                                    <BlurredButton
+                                        onClick={handleClose}
+                                        sx={{
+                                            color: (theme) => theme.palette.primary.main,
+                                            fontSize: (theme) => theme.fontSize['xl'],
+                                        }}
+                                    >
+                                        {page.title}
+                                    </BlurredButton>
+                                </Link>
+                            )
+                        )}
                     </Box>
                     <Stack>
                         <LogOutButton />

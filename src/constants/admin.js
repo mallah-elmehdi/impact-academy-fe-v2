@@ -18,7 +18,16 @@ export const ADMIN_NAVBAR = [
         id: 'admin-user',
         title: 'Utilisateurs',
         icon: <BsPeople />,
-        url: PAGES.adminUser.url,
+        menu: [
+            {
+                title: 'participant',
+                url: PAGES.adminUserParticipant.url,
+            },
+            {
+                title: 'mentor',
+                url: PAGES.adminUserMentor.url,
+            },
+        ],
     },
     {
         id: 'admin-quiz',

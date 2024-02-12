@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BlurredButton, Logo } from '../../components';
 import LogOutButton from './LogOutButton';
+import Menu from './Menu';
 
 const Desktop = ({ sticky, selected, navbarItems }) => {
     const navigate = useNavigate();
@@ -11,11 +12,15 @@ const Desktop = ({ sticky, selected, navbarItems }) => {
         <>
             <Logo white />
             <Box sx={{ display: 'flex', gap: 1, mr: 'auto', ml: 3, alignItems: 'center' }}>
-                {navbarItems.map((page) => (
-                    <BlurredButton key={page.id} startIcon={page.icon} onClick={() => navigate(page.url)}>
-                        {page.title}
-                    </BlurredButton>
-                ))}
+                {navbarItems.map((page) =>
+                    page.menu ? (
+                        <Menu key={page.id} {...page} />
+                    ) : (
+                        <BlurredButton key={page.id} startIcon={page.icon} onClick={() => navigate(page.url)}>
+                            {page.title}
+                        </BlurredButton>
+                    )
+                )}
             </Box>
             <LogOutButton />
         </>

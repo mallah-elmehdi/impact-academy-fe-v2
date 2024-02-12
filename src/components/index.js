@@ -28,3 +28,4 @@ export { default as ScoreCard } from './ScoreCard';
 export { default as NumberIcon } from './NumberIcon';
 export { default as ButtonDialog } from './ButtonDialog';
 export { default as SmallButton } from './SmallButton';
+export { default as FileInput } from './FileInput';
