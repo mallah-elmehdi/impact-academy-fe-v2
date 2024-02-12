@@ -8,13 +8,15 @@ import {
     Base,
     LogIn,
     Mentor,
+    MentorHome,
+    MentorPresence,
     Participant,
     ParticipantEvaluation,
     ParticipantHome,
     ParticipantProfile,
     ParticipantQuiz,
     ParticipantQuizAnswers,
-    ParticipantQuizDetails
+    ParticipantQuizDetails,
 } from '../pages';
 
 export default createBrowserRouter([
@@ -70,6 +72,17 @@ export default createBrowserRouter([
             {
                 path: PAGES.mentor.url,
                 element: <Mentor />,
+                children: [
+                    {
+                        path: PAGES.mentorHome.url,
+                        element: <MentorHome />,
+                        index: true,
+                    },
+                    {
+                        path: PAGES.mentorPresence.url,
+                        element: <MentorPresence />,
+                    },
+                ],
             },
 
             // -------------- ADMIN
