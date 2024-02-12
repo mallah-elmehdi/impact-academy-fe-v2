@@ -29,3 +29,5 @@ export { default as NumberIcon } from './NumberIcon';
 export { default as ButtonDialog } from './ButtonDialog';
 export { default as SmallButton } from './SmallButton';
 export { default as FileInput } from './FileInput';
+export { default as Alert } from './Alert';
+export { default as Loader } from './Loader';

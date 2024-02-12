@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useScrollToTop } from '../../hooks';
+import { Alert, Loader } from '../../components';
 
 const Base = () => {
     // scroll to top when page changes
@@ -18,6 +19,8 @@ const Base = () => {
                 position: 'relative',
             })}
         >
+            <Loader />
+            <Alert />
             <Outlet />
         </Box>
     );

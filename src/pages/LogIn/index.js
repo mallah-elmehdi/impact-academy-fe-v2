@@ -7,8 +7,12 @@ import { PAGES } from '../../constants/pages';
 import { usePageTitle } from '../../hooks';
 import PasswordInput from './PasswordInput';
 import ProtectionLogIn from './ProtectionLogIn';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../contexts/auth/apis';
 
 const LogIn = () => {
+    const dispatch = useDispatch();
+
     // medium breakpoint
     const md = useMediaQuery((theme) => theme.breakpoints.up('md'));
 
@@ -30,6 +34,8 @@ const LogIn = () => {
     // ========= submit
     const onSubmit = (data, event) => {
         event.preventDefault();
+
+        dispatch(logIn(data));
     };
 
     return (
