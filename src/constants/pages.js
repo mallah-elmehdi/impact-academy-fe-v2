@@ -32,6 +32,9 @@ export const PAGES = {
     mentorHome: {
         url: 'accueil',
     },
+    mentorEvaluation: {
+        url: 'evaluation',
+    },
     mentorPresence: {
         url: 'presence',
     },

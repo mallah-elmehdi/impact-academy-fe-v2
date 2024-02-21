@@ -1,4 +1,4 @@
-import { BsHouse, BsListCheck } from 'react-icons/bs';
+import { BsCheck, BsHouse, BsListCheck } from 'react-icons/bs';
 import { PAGES } from './pages';
 
 export const MENTOR_NAVBAR = [
@@ -7,6 +7,12 @@ export const MENTOR_NAVBAR = [
         title: 'Accueil',
         icon: <BsHouse />,
         url: PAGES.mentorHome.url,
+    },
+    {
+        id: 'admin-evalution',
+        title: 'Évaluation',
+        icon: <BsCheck />,
+        url: PAGES.mentorEvaluation.url,
     },
     {
         id: 'admin-presence',

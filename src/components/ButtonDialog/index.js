@@ -3,17 +3,23 @@ import React from 'react';
 import { BsX } from 'react-icons/bs';
 import { Button, Dialog, SmallButton } from '..';
 
-const ButtonDialog = ({ children, buttonTitle, title, action, width, smallButton }) => {
+const ButtonDialog = ({ children, buttonTitle, title, action, width, smallButton, button }) => {
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <>
-            {smallButton ? (
-                <SmallButton onClick={handleClickOpen}>{buttonTitle}</SmallButton>
+            {button ? (
+                <>{button({ onClick: handleClickOpen })}</>
             ) : (
-                <Button onClick={handleClickOpen}>{buttonTitle}</Button>
+                <>
+                    {smallButton ? (
+                        <SmallButton onClick={handleClickOpen}>{buttonTitle}</SmallButton>
+                    ) : (
+                        <Button onClick={handleClickOpen}>{buttonTitle}</Button>
+                    )}
+                </>
             )}
             <Dialog maxWidth={width ? width : 'md'} onClose={handleClose} open={open}>
                 <DialogTitle

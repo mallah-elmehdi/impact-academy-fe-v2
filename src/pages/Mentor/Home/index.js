@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { DashboardTitle } from '../../../components';
 import { MENTOR_NAVBAR } from '../../../constants/mentor';
@@ -9,6 +9,17 @@ const Home = () => {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <DashboardTitle>{MENTOR_NAVBAR[0].title}</DashboardTitle>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography
+                        sx={(theme) => ({
+                            fontSize: theme.fontSize['3xl'],
+                            fontWeight: theme.fontWeight.bold,
+                            color: theme.palette.common.black,
+                        })}
+                    >
+                        Bienvenue El Mehdi Mallah
+                    </Typography>
                 </Grid>
             </Grid>
         </Box>

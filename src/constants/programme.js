@@ -4,25 +4,21 @@ export const ROLES = {
     PARTICIPANT: 'PARTICIPANT',
 };
 
-export const BOOTCAMPS = [
+export const WORKSHOPS = [
     {
-        bootcamp: 'BOOTCAMP_1',
-        title: 'Bootcamp 1',
+        workshop: 'WORKSHOP_1',
+        title: 'workshop 1',
     },
     {
-        bootcamp: 'BOOTCAMP_2',
-        title: 'Bootcamp 2',
+        workshop: 'WORKSHOP_2',
+        title: 'workshop 2',
     },
     {
-        bootcamp: 'BOOTCAMP_3',
-        title: 'Bootcamp 3',
+        workshop: 'WORKSHOP_3',
+        title: 'workshop 3',
     },
     {
-        bootcamp: 'BOOTCAMP_4',
-        title: 'Bootcamp 4',
-    },
-    {
-        bootcamp: 'BOOTCAMP_5',
-        title: 'Bootcamp 5',
+        workshop: 'WORKSHOP_4',
+        title: 'workshop 4',
     },
 ];

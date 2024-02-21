@@ -31,3 +31,5 @@ export { default as SmallButton } from './SmallButton';
 export { default as FileInput } from './FileInput';
 export { default as Alert } from './Alert';
 export { default as Loader } from './Loader';
+export { default as Tag } from './Tag';
+export { default as Checkbox } from './Checkbox';
