@@ -46,3 +46,13 @@ export const dateFormattingNumber = (_date) => {
     }
     return 'N/A';
 };
+
+export const pagination = (page, length) => {
+    const PAGE_LIMIT = 10;
+
+    return {
+        count: Math.ceil(length / PAGE_LIMIT),
+        start: PAGE_LIMIT * (page - 1),
+        end: page * PAGE_LIMIT,
+    };
+};

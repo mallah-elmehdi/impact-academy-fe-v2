@@ -5,7 +5,7 @@ import { BlurredButton, Logo } from '../../components';
 import LogOutButton from './LogOutButton';
 import Menu from './Menu';
 
-const Desktop = ({ sticky, selected, navbarItems }) => {
+const Desktop = ({ navbarItems }) => {
     const navigate = useNavigate();
 
     return (

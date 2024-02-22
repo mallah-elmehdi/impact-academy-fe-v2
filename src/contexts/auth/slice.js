@@ -3,8 +3,7 @@ import { logIn } from './apis';
 
 const initialState = {
     access_token: null,
-    refresh_token: null,
-    is_admin: false,
+    role: null,
 };
 
 const authSlice = createSlice({
@@ -18,8 +17,7 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(logIn.fulfilled, (state, { payload }) => {
             state.access_token = payload.access_token;
-            state.refresh_token = payload.refresh_token;
-            state.is_admin = payload.is_admin === true;
+            state.role = payload.role;
         });
     },
 });

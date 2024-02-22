@@ -11,7 +11,6 @@ const alertSlice = createSlice({
     initialState,
     reducers: {
         openAlert: (state, { payload }) => {
-            console.log(payload);
             state.isOpen = true;
             state.severity = payload.severity || 'success';
             state.message = payload.message;

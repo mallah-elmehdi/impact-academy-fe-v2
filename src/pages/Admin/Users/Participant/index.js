@@ -1,11 +1,42 @@
-import { Box, Grid, Table, TableBody, TableContainer, TableHead } from '@mui/material';
-import React from 'react';
-import { BorderedCard, Button, DashboardTitle, SmallButton } from '../../../../components';
+import { Box, Grid, Table, TableBody, TableContainer, TableHead, Pagination, MenuItem } from '@mui/material';
+import React, { useState } from 'react';
+import { BorderedCard, DashboardTitle, Filter, Menu } from '../../../../components';
 import { TableCell, TableRow } from '../../../../components/Table';
 import { ADMIN_NAVBAR } from '../../../../constants/admin';
 import AddParticipant from './AddParticipant';
+import { useSearchParams } from 'react-router-dom';
+import { pagination } from '../../../../utils/functions';
 
+const fake = () => {
+    let data = [];
+    for (let i = 0; i < 812; i++) {
+        data.push({
+            firstname: 'firstname-' + i,
+            lastname: 'lastname-' + i,
+            group: 'group-' + i,
+        });
+    }
+
+    return data;
+};
 const Participant = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const pageQuery = searchParams.get('page') || 1;
+
+    const [page, setPage] = React.useState(parseInt(pageQuery));
+    const handleChange = (event, value) => {
+        setSearchParams({ page: value });
+        setPage(value);
+    };
+
+    const [data, setData] = useState(() => fake());
+
+    const { start, end, count } = pagination(page, data.length);
+
+    const handleFilter = (group) => {
+        setData(fake().filter((item) => item.group === group));
+    };
+
     return (
         <Box>
             <Grid container spacing={3}>
@@ -15,6 +46,22 @@ const Participant = () => {
                 <Grid item xs={12}>
                     <AddParticipant />
                 </Grid>
+                <Grid item xs={12}>
+                    <Filter title="Groupe">
+                        {(close) =>
+                            data.map((item) => (
+                                <MenuItem
+                                    onClick={() => {
+                                        handleFilter(item.group);
+                                        close();
+                                    }}
+                                >
+                                    {item.group}
+                                </MenuItem>
+                            ))
+                        }
+                    </Filter>
+                </Grid>
 
                 <Grid item xs={12}>
                     <TableContainer component={BorderedCard}>
@@ -22,23 +69,22 @@ const Participant = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Nom & Prénom</TableCell>
-                                    <TableCell>Province</TableCell>
                                     <TableCell>Group</TableCell>
-                                    <TableCell>Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>El Mehdi Mallah</TableCell>
-                                    <TableCell>BENGUERIR</TableCell>
-                                    <TableCell>G1-A</TableCell>
-                                    <TableCell>
-                                        <SmallButton>action</SmallButton>
-                                    </TableCell>
-                                </TableRow>
+                                {data.slice(start, end).map((item) => (
+                                    <TableRow>
+                                        <TableCell>{item.firstname + ' ' + item.lastname}</TableCell>
+                                        <TableCell>{item.group}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
+                </Grid>
+                <Grid item xs={12}>
+                    <Pagination count={count} page={page} onChange={handleChange} />
                 </Grid>
             </Grid>
         </Box>
