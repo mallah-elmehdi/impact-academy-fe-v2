@@ -34,3 +34,4 @@ export { default as Loader } from './Loader';
 export { default as Tag } from './Tag';
 export { default as Checkbox } from './Checkbox';
 export { default as Slider } from './Slider';
+export { default as LinedTitle } from './LinedTitle';
