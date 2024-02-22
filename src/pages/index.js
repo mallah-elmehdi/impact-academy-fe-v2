@@ -17,6 +17,7 @@ export { default as Mentor } from './Mentor';
 export { default as MentorHome } from './Mentor/Home';
 export { default as MentorPresence } from './Mentor/Presence';
 export { default as MentorEvaluation } from './Mentor/Evaluation';
+export { default as MentorEvaluationParticipantEvaluation } from './Mentor/Evaluation/ParticipantEvaluation';
 
 // ========== ADMIN PAGES
 export { default as Admin } from './Admin';

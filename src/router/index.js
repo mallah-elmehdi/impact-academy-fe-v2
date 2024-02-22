@@ -9,6 +9,7 @@ import {
     LogIn,
     Mentor,
     MentorEvaluation,
+    MentorEvaluationParticipantEvaluation,
     MentorHome,
     MentorPresence,
     Participant,
@@ -86,6 +87,10 @@ export default createBrowserRouter([
                     {
                         path: PAGES.mentorEvaluation.url,
                         element: <MentorEvaluation />,
+                    },
+                    {
+                        path: PAGES.mentorEvaluation.url + "/:participantId",
+                        element: <MentorEvaluationParticipantEvaluation />,
                     },
                 ],
             },

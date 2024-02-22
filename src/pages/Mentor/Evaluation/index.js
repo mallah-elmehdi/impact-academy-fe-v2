@@ -1,9 +1,8 @@
-import { Box, Grid, Stack, Table, TableBody, TableContainer, TableHead } from '@mui/material';
+import { Box, Grid, Table, TableBody, TableContainer, TableHead } from '@mui/material';
 import React from 'react';
-import { BorderedCard, DashboardTitle } from '../../../components';
-import { MENTOR_NAVBAR } from '../../../constants/mentor';
+import { BorderedCard, DashboardTitle, SmallButton } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
-import AddEvaluate from './AddEvaluate';
+import { MENTOR_NAVBAR } from '../../../constants/mentor';
 
 const Evaluation = () => {
     return (
@@ -24,14 +23,10 @@ const Evaluation = () => {
                             </TableHead>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell>Date</TableCell>
+                                    <TableCell>El Mehdi Mallah</TableCell>
                                     <TableCell>4.5/5</TableCell>
                                     <TableCell>
-                                        <Stack direction="row" spacing={1}>
-                                            {/* <ListOfPresence />
-                                            <EditListOfPresence /> */}
-                                            <AddEvaluate />
-                                        </Stack>
+                                        <SmallButton>Évaluer</SmallButton>
                                     </TableCell>
                                 </TableRow>
                             </TableBody>
