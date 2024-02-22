@@ -5,6 +5,7 @@ import {
     AdminGroup,
     AdminHome,
     AdminUserParticipant,
+    AdminUserMentor,
     Base,
     LogIn,
     Mentor,
@@ -89,7 +90,7 @@ export default createBrowserRouter([
                         element: <MentorEvaluation />,
                     },
                     {
-                        path: PAGES.mentorEvaluation.url + "/:participantId",
+                        path: PAGES.mentorEvaluation.url + '/:participantId',
                         element: <MentorEvaluationParticipantEvaluation />,
                     },
                 ],
@@ -112,6 +113,10 @@ export default createBrowserRouter([
                     {
                         path: PAGES.adminUserParticipant.url,
                         element: <AdminUserParticipant />,
+                    },
+                    {
+                        path: PAGES.adminUserMentor.url,
+                        element: <AdminUserMentor />,
                     },
                 ],
             },
