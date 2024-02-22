@@ -23,7 +23,7 @@ const LevelTextColor = (value) => {
 
 const data = [
     {
-        bootcamp: 'Bootcamp 1',
+        workshop: 'Workshop 1',
         evaluation: {
             insertion: {
                 f1: 2,
@@ -49,7 +49,7 @@ const data = [
         },
     },
     {
-        bootcamp: 'Bootcamp 2',
+        workshop: 'Workshop 2',
         evaluation: {
             insertion: {
                 f1: 2.5,
@@ -75,7 +75,7 @@ const data = [
         },
     },
     {
-        bootcamp: 'Bootcamp 3',
+        workshop: 'Workshop 3',
         evaluation: {
             insertion: {
                 f1: 4,
@@ -101,7 +101,7 @@ const data = [
         },
     },
     {
-        bootcamp: 'Bootcamp 4',
+        workshop: 'Workshop 4',
         evaluation: {
             insertion: {
                 f1: 1.5,
@@ -127,7 +127,7 @@ const data = [
         },
     },
     {
-        bootcamp: 'Bootcamp 5',
+        workshop: 'Workshop 5',
         evaluation: {
             insertion: {
                 f1: 0.5,
@@ -166,9 +166,9 @@ const Evaluation = () => {
 
                 return (
                     <EvaluationCard
-                        title={item.bootcamp}
+                        title={item.workshop}
                         evaluation={item.evaluation}
-                        bootcamp={item.bootcamp}
+                        workshop={item.workshop}
                         value={globalValue}
                         scoreCoaching={valueCoaching}
                         scoreFormation={valueFormation}

@@ -40,14 +40,16 @@ const ScoreCard = ({ title, value, children, action }) => {
                 <Grid item md={0.25} xs={12}>
                     <DividerVertical />
                 </Grid>
-                <Grid item md={8.5} xs={12}>
+                <Grid item md={action ? 8.5 : 9.75} xs={12} sx={{ alignSelf: 'center' }}>
                     {children}
                 </Grid>
-                <Grid item md={1.25} sm={4} xs={12}>
-                    <Stack sx={{ height: '100%' }} justifyContent="center">
-                        {action}
-                    </Stack>
-                </Grid>
+                {action && (
+                    <Grid item md={1.25} sm={4} xs={12}>
+                        <Stack sx={{ height: '100%' }} justifyContent="center">
+                            {action}
+                        </Stack>
+                    </Grid>
+                )}
             </Grid>
         </Card>
     );

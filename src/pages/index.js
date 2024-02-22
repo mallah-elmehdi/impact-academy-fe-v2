@@ -16,6 +16,7 @@ export { default as ParticipantQuizAnswers } from './Participant/Quiz/QuizAnswer
 export { default as Mentor } from './Mentor';
 export { default as MentorHome } from './Mentor/Home';
 export { default as MentorPresence } from './Mentor/Presence';
+export { default as MentorEvaluation } from './Mentor/Evaluation';
 
 // ========== ADMIN PAGES
 export { default as Admin } from './Admin';

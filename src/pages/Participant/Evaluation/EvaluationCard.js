@@ -4,9 +4,9 @@ import { BsBoxArrowInUp, BsEasel, BsMortarboard } from 'react-icons/bs';
 import { IconText, Score, ScoreCard } from '../../../components';
 import EvaluationDetails from './EvaluationDetails';
 
-const EvaluationCard = ({ title, value, scoreFormation, scoreCoaching, scoreInsertion, evaluation, bootcamp }) => {
+const EvaluationCard = ({ title, value, scoreFormation, scoreCoaching, scoreInsertion, evaluation, workshop }) => {
     return (
-        <ScoreCard title={title} value={value} action={<EvaluationDetails bootcamp={bootcamp} data={evaluation} />}>
+        <ScoreCard title={title} value={value} action={<EvaluationDetails workshop={workshop} data={evaluation} />}>
             <Grid container spacing={2} alignItems="stretch" alignSelf="stretch" height="100%">
                 <Grid item md={4} sm={4} xs={12}>
                     <Stack spacing={2} justifyContent="space-between" sx={{ height: '100%' }}>

@@ -1,41 +1,36 @@
-import { Box, Grid, Table, TableBody, TableContainer, TableHead, Stack } from '@mui/material';
+import { Box, Grid, Stack, Table, TableBody, TableContainer, TableHead } from '@mui/material';
 import React from 'react';
 import { BorderedCard, DashboardTitle } from '../../../components';
-import { TableCell, TableRow } from '../../../components/Table';
 import { MENTOR_NAVBAR } from '../../../constants/mentor';
-import { dateFormattingNumber } from '../../../utils/functions';
-import AddPresence from './AddPresence';
-import ListOfPresence from './ListOfPresence';
-import EditListOfPresence from './EditListOfPresence';
+import { TableCell, TableRow } from '../../../components/Table';
+import AddEvaluate from './AddEvaluate';
 
-const Presence = () => {
+const Evaluation = () => {
     return (
         <Box>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <DashboardTitle>{MENTOR_NAVBAR[2].title}</DashboardTitle>
-                </Grid>
-                <Grid item xs={12}>
-                    <AddPresence />
+                    <DashboardTitle>{MENTOR_NAVBAR[1].title}</DashboardTitle>
                 </Grid>
                 <Grid item xs={12}>
                     <TableContainer component={BorderedCard}>
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Date</TableCell>
-                                    <TableCell>Workshop</TableCell>
+                                    <TableCell>Nom et prénom</TableCell>
+                                    <TableCell>Moyenne</TableCell>
                                     <TableCell>Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell>{dateFormattingNumber(new Date())}</TableCell>
-                                    <TableCell>BENGUERIR</TableCell>
+                                    <TableCell>Date</TableCell>
+                                    <TableCell>4.5/5</TableCell>
                                     <TableCell>
                                         <Stack direction="row" spacing={1}>
-                                            <ListOfPresence />
-                                            <EditListOfPresence />
+                                            {/* <ListOfPresence />
+                                            <EditListOfPresence /> */}
+                                            <AddEvaluate />
                                         </Stack>
                                     </TableCell>
                                 </TableRow>
@@ -48,4 +43,4 @@ const Presence = () => {
     );
 };
 
-export default Presence;
+export default Evaluation;

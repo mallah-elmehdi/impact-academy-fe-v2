@@ -1,8 +1,8 @@
 import { Table, TableBody, TableContainer, TableHead } from '@mui/material';
 import React from 'react';
-import { BorderedCard, Button, ButtonDialog, Checkbox, FilledIconButton, Tag } from '../../../components';
+import { BsPencil } from 'react-icons/bs';
+import { BorderedCard, Button, ButtonDialog, Checkbox, FilledIconButton } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
-import { BsEye, BsPencil } from 'react-icons/bs';
 
 const EditListOfPresence = () => {
     const [list, setList] = React.useState([]);
