@@ -20,7 +20,7 @@ const EditListOfPresence = () => {
                     <BsPencil />
                 </FilledIconButton>
             )}
-            action={<Button>Soumettre</Button>}
+            action={(close) => <Button onClick={close}>Soumettre</Button>}
         >
             <TableContainer component={BorderedCard}>
                 <Table>

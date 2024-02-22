@@ -13,7 +13,7 @@ export const wrapper = () => async (dispatch, cb) => {
                 message: error?.message,
             })
         );
-        throw error;
+        return error;
     } finally {
         dispatch(finishLoading());
     }

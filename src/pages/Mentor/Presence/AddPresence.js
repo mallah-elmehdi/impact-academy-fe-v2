@@ -28,11 +28,11 @@ const AddPresence = () => {
             title="Ajouter une liste de présence"
             buttonTitle="Ajouter"
             width="sm"
-            action={
-                <Button type="submit" form="add-presence-list">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="add-presence-list">
                     Ajouter
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="add-presence-list">
                 <Grid container spacing={3}>

@@ -51,7 +51,7 @@ export const pagination = (page, length) => {
     const PAGE_LIMIT = 10;
 
     return {
-        count: Math.ceil(length / PAGE_LIMIT),
+        count: Math.ceil(length / PAGE_LIMIT) || 1,
         start: PAGE_LIMIT * (page - 1),
         end: page * PAGE_LIMIT,
     };

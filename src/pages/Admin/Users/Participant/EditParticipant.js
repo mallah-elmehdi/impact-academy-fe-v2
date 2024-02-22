@@ -33,11 +33,11 @@ const EditParticipant = () => {
                 </FilledIconButton>
             )}
             width="sm"
-            action={
-                <Button type="submit" form="add-group">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="add-group">
                     Modifier
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="add-group">
                 <Grid container spacing={3}></Grid>

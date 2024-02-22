@@ -23,16 +23,12 @@ const Mentor = () => {
                                 <TableRow>
                                     <TableCell>Nom & Prénom</TableCell>
                                     <TableCell>Group</TableCell>
-                                    <TableCell>Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow>
                                     <TableCell>El Mehdi Mallah</TableCell>
                                     <TableCell>G1-A</TableCell>
-                                    <TableCell>
-                                        <SmallButton>action</SmallButton>
-                                    </TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>

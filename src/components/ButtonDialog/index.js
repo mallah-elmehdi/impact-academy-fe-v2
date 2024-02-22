@@ -53,7 +53,7 @@ const ButtonDialog = ({ children, buttonTitle, title, action, width, smallButton
                             '&.MuiDialogActions-root': { p: theme.spacing(3) },
                         })}
                     >
-                        {action}
+                        {action(handleClose)}
                     </DialogActions>
                 )}
             </Dialog>

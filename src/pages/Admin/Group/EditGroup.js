@@ -30,13 +30,13 @@ const EditGroup = () => {
             buttonTitle="Modifier"
             width="sm"
             smallButton
-            action={
-                <Button type="submit" form="add-group">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="edit-group">
                     Modifier
                 </Button>
-            }
+            )}
         >
-            <form onSubmit={handleSubmit(onSubmit)} id="add-group">
+            <form onSubmit={handleSubmit(onSubmit)} id="edit-group">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Controller

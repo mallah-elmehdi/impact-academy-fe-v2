@@ -32,11 +32,11 @@ const AddParticipant = () => {
             title="Ajouter un groupe"
             buttonTitle="Ajouter"
             width="sm"
-            action={
-                <Button type="submit" form="add-group">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="add-group">
                     Ajouter
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="add-group">
                 <Grid container spacing={3}>

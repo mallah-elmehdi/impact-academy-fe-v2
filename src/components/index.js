@@ -36,3 +36,4 @@ export { default as Checkbox } from './Checkbox';
 export { default as Slider } from './Slider';
 export { default as LinedTitle } from './LinedTitle';
 export { default as Filter } from './Filter';
+export { default as NoData } from './NoData';

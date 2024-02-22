@@ -31,11 +31,11 @@ const AddMentor = () => {
             title="Ajouter un groupe"
             buttonTitle="Ajouter"
             width="sm"
-            action={
-                <Button type="submit" form="add-group">
-                    Ajouter
+            action={(close) => (
+                <Button type="submit" onClick={close} form="edit-group">
+                    Modifier
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="add-group">
                 <Grid container spacing={3}>

@@ -16,7 +16,11 @@ const AddEvaluate = () => {
                     <BsPencil />
                 </FilledIconButton>
             )}
-            action={<Button>Soumettre</Button>}
+            action={(close) => (
+                <Button type="submit" onClick={close} form="add-group">
+                    Soumettre
+                </Button>
+            )}
             width="lg"
         >
             <Stack spacing={3}>

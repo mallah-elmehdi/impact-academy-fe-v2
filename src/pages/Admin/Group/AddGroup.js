@@ -1,11 +1,15 @@
-import { Grid, Autocomplete, InputAdornment } from '@mui/material';
+import { Autocomplete, Grid, InputAdornment } from '@mui/material';
 import React from 'react';
-import { Button, ButtonDialog, Input } from '../../../components';
 import { Controller, useForm } from 'react-hook-form';
 import { BsCollection, BsGeoAlt } from 'react-icons/bs';
-import { ORIENTATION } from '../../../constants/participant';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, ButtonDialog, Input } from '../../../components';
+import { createGroup } from '../../../apis/group';
 
 const AddGroup = () => {
+    const { provinces } = useSelector((store) => store.province);
+    const dispatch = useDispatch();
+
     const {
         formState: { errors },
         handleSubmit,
@@ -22,6 +26,8 @@ const AddGroup = () => {
     // ===== submit
     const onSubmit = (data, event) => {
         event.preventDefault();
+        dispatch(createGroup(data));
+        reset();
     };
 
     return (
@@ -29,11 +35,11 @@ const AddGroup = () => {
             title="Ajouter un groupe"
             buttonTitle="Ajouter"
             width="sm"
-            action={
-                <Button type="submit" form="add-group">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="add-group">
                     Ajouter
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="add-group">
                 <Grid container spacing={3}>
@@ -69,12 +75,12 @@ const AddGroup = () => {
                                     noOptionsText="Aucune option"
                                     autoHighlight
                                     isOptionEqualToValue={(option, value) => option === value}
-                                    options={ORIENTATION.map((option) => option)}
+                                    options={provinces.map((option) => option)}
                                     // defaultValue={profile?.orientation}
-                                    getOptionLabel={(option) => option}
+                                    getOptionLabel={(option) => option.name}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
-                                        setValue('orientation', values);
+                                        setValue('provinceId', values?.id);
                                     }}
                                     renderInput={(params) => {
                                         return (

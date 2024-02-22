@@ -49,11 +49,11 @@ const UpdateProfile = () => {
         <ButtonDialog
             title="Modifier le profil"
             buttonTitle="Modifier"
-            action={
-                <Button type="submit" form="edit-profile-student">
+            action={(close) => (
+                <Button type="submit" onClick={close} form="edit-profile-student">
                     Modifier
                 </Button>
-            }
+            )}
         >
             <form onSubmit={handleSubmit(onSubmit)} id="edit-profile-student">
                 <Grid container spacing={3}>
