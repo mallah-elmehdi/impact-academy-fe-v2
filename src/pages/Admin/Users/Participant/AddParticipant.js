@@ -1,11 +1,16 @@
 import { Autocomplete, Grid, InputAdornment } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { BsCollection } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { createParticipant } from '../../../../apis/participant';
 import { Button, ButtonDialog, FileInput, Input } from '../../../../components';
-import { ORIENTATION } from '../../../../constants/participant';
+import { groupAll } from '../../../../contexts/group/apis';
 
 const AddParticipant = () => {
+    const dispatch = useDispatch();
+    const { groups } = useSelector((store) => store.group);
+
     const {
         formState: { errors },
         handleSubmit,
@@ -16,15 +21,28 @@ const AddParticipant = () => {
     } = useForm({
         defaultValues: {
             groupId: '',
+            provinceId: '',
             file: '',
         },
     });
 
-    const { FileInputComponent } = FileInput({ setError, setValue });
+    const { FileInputComponent, file } = FileInput({ setError, setValue });
+
+    useEffect(() => {
+        if (groups.length === 0) {
+            dispatch(groupAll());
+        }
+    }, []);
 
     // ===== submit
     const onSubmit = (data, event) => {
         event.preventDefault();
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('provinceId', data.provinceId);
+        formData.append('groupId', data.groupId);
+        dispatch(createParticipant(formData));
+        reset();
     };
 
     return (
@@ -52,12 +70,13 @@ const AddParticipant = () => {
                                     noOptionsText="Aucune option"
                                     autoHighlight
                                     isOptionEqualToValue={(option, value) => option === value}
-                                    options={ORIENTATION.map((option) => option)}
+                                    options={groups.map((option) => option)}
                                     // defaultValue={profile?.orientation}
-                                    getOptionLabel={(option) => option}
+                                    getOptionLabel={(option) => option.name}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
-                                        setValue('orientation', values);
+                                        setValue('groupId', values?.id);
+                                        setValue('provinceId', values?.provinceId);
                                     }}
                                     renderInput={(params) => {
                                         return (

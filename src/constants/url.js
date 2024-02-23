@@ -14,4 +14,8 @@ export const URLS = {
     // MENTOR
     MENTOR_ALL: '/mentor/all',
     MENTOR: '/mentor',
+
+     // PARTICIPANT
+     PARTICIPANT_ALL: '/participant/all',
+     PARTICIPANT: '/participant',
 };

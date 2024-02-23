@@ -8,6 +8,8 @@ import { mentorAll } from '../../../../contexts/mentor/apis';
 import AddMentor from './AddMentor';
 import { useSearchParams } from 'react-router-dom';
 import { pagination } from '../../../../utils/functions';
+import { groupAll } from '../../../../contexts/group/apis';
+import { provinceAll } from '../../../../contexts/province/apis';
 
 const Mentor = () => {
     const dispatch = useDispatch();
@@ -50,6 +52,12 @@ const Mentor = () => {
     useEffect(() => {
         if (mentors.length === 0) {
             dispatch(mentorAll());
+        }
+        if (groups.length === 0) {
+            dispatch(groupAll());
+        }
+        if (provinces.length === 0) {
+            dispatch(provinceAll());
         }
     }, []);
 
