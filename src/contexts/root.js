@@ -5,6 +5,7 @@ import loaderReducer from './loader/slice';
 import alertReducer from './alert/slice';
 import provinceReducer from './province/slice';
 import groupReducer from './group/slice';
+import mentorReducer from './mentor/slice';
 
 const rootReducer = combineReducers({
     loader: loaderReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     // ----
     province: provinceReducer,
     group: groupReducer,
+    mentor: mentorReducer,
 });
 
 export default rootReducer;

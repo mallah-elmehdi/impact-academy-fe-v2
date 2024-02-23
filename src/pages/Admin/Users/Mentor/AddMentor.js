@@ -1,11 +1,16 @@
 import { Autocomplete, Grid, InputAdornment } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { BsCollection, BsPerson } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { createMentor } from '../../../../apis/mentor';
 import { Button, ButtonDialog, Input } from '../../../../components';
-import { ORIENTATION } from '../../../../constants/participant';
+import { groupAll } from '../../../../contexts/group/apis';
 
 const AddMentor = () => {
+    const dispatch = useDispatch();
+    const { groups } = useSelector((store) => store.group);
+
     const {
         formState: { errors },
         handleSubmit,
@@ -16,28 +21,37 @@ const AddMentor = () => {
     } = useForm({
         defaultValues: {
             groupId: '',
+            provinceId: '',
             firstname: '',
             lastname: '',
         },
     });
 
+    useEffect(() => {
+        if (groups.length === 0) {
+            dispatch(groupAll());
+        }
+    }, []);
+
     // ===== submit
     const onSubmit = (data, event) => {
         event.preventDefault();
+        dispatch(createMentor(data));
+        reset();
     };
 
     return (
         <ButtonDialog
-            title="Ajouter un groupe"
+            title="Ajouter un mentor"
             buttonTitle="Ajouter"
             width="sm"
             action={(close) => (
-                <Button type="submit" onClick={close} form="edit-group">
-                    Modifier
+                <Button type="submit" onClick={close} form="add-mentor">
+                    Ajouter
                 </Button>
             )}
         >
-            <form onSubmit={handleSubmit(onSubmit)} id="add-group">
+            <form onSubmit={handleSubmit(onSubmit)} id="add-mentor">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Controller
@@ -51,12 +65,13 @@ const AddMentor = () => {
                                     noOptionsText="Aucune option"
                                     autoHighlight
                                     isOptionEqualToValue={(option, value) => option === value}
-                                    options={ORIENTATION.map((option) => option)}
+                                    options={groups.map((option) => option)}
                                     // defaultValue={profile?.orientation}
-                                    getOptionLabel={(option) => option}
+                                    getOptionLabel={(option) => option.name}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
-                                        setValue('orientation', values);
+                                        setValue('groupId', values?.id);
+                                        setValue('provinceId', values?.provinceId);
                                     }}
                                     renderInput={(params) => {
                                         return (

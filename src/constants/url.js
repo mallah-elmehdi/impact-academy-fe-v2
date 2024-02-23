@@ -10,4 +10,8 @@ export const URLS = {
     // GROUP
     GROUP_ALL: '/group/all',
     GROUP: '/group',
+
+    // MENTOR
+    MENTOR_ALL: '/mentor/all',
+    MENTOR: '/mentor',
 };
