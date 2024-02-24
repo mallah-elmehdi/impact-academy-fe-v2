@@ -56,3 +56,22 @@ export const pagination = (page, length) => {
         end: page * PAGE_LIMIT,
     };
 };
+
+export const totalScore = (evaluations = []) => {
+    const divider = evaluations.length === 0 ? 1 : evaluations.length;
+    return (evaluations.reduce((total, num) => total + num.score, 0) / divider).toFixed(2);
+};
+
+export const getEvaluationsByWorkshop = (evaluations, workshop) => {
+    return evaluations.filter((item) => item.workshop === workshop);
+};
+
+export const getScoreByCriteria = (evaluations, criteria) => {
+    const criteriaItem = evaluations.filter((item) => item.criteria === criteria)[0];
+    return criteriaItem ? criteriaItem.score : 0;
+};
+
+export const getEvaluationsIdByWorkshopAndCriteria = (evaluations, criteria, workshop) => {
+    const criteriaItem = evaluations.filter((item) => item.criteria === criteria && item.workshop === workshop)[0];
+    return criteriaItem ? criteriaItem.id : null;
+};

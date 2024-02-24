@@ -1,10 +1,20 @@
 import { Box, Grid, Table, TableBody, TableContainer, TableHead } from '@mui/material';
-import React from 'react';
-import { BorderedCard, DashboardTitle, SmallButton } from '../../../components';
+import React, { useEffect } from 'react';
+import { BorderedCard, DashboardTitle, Link, SmallButton } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
 import { MENTOR_NAVBAR } from '../../../constants/mentor';
+import { useSelector, useDispatch } from 'react-redux';
+import { participantByMentor } from '../../../contexts/participant/apis';
+import { totalScore } from '../../../utils/functions';
 
 const Evaluation = () => {
+    const dispatch = useDispatch();
+    const { participants } = useSelector((store) => store.participant);
+
+    useEffect(() => {
+        dispatch(participantByMentor());
+    }, []);
+
     return (
         <Box>
             <Grid container spacing={3}>
@@ -22,13 +32,20 @@ const Evaluation = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>El Mehdi Mallah</TableCell>
-                                    <TableCell>4.5/5</TableCell>
-                                    <TableCell>
-                                        <SmallButton>Évaluer</SmallButton>
-                                    </TableCell>
-                                </TableRow>
+                                {participants &&
+                                    participants.map((item) => (
+                                        <TableRow key={item.id}>
+                                            <TableCell>
+                                                {item.firstname} {item.lastname}
+                                            </TableCell>
+                                            <TableCell>{totalScore(item.evaluations)}/5</TableCell>
+                                            <TableCell>
+                                                <Link to={item.id + ''}>
+                                                    <SmallButton>Évaluer</SmallButton>
+                                                </Link>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                             </TableBody>
                         </Table>
                     </TableContainer>

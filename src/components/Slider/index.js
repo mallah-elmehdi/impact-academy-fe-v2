@@ -2,7 +2,7 @@ import { Slider, alpha, styled } from '@mui/material';
 
 const StyledSlider = styled(Slider)(({ theme }) => ({
     // color: theme.palette.secondary.main,
-    color: alpha(theme.palette.primary.main, 0.75),
+    color: alpha(theme.palette.primary.light_main, 0.75),
     height: 15,
     width: '100%',
     flexGrow: 1,
@@ -29,7 +29,7 @@ const StyledSlider = styled(Slider)(({ theme }) => ({
         width: 32,
         height: 32,
         borderRadius: '50% 50% 50% 0',
-        backgroundColor: alpha(theme.palette.primary.main, 0.75),
+        backgroundColor: alpha(theme.palette.primary.light_main, 0.75),
         // backgroundColor: theme.palette.secondary.main,
         transformOrigin: 'bottom left',
         transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',

@@ -9,7 +9,12 @@ const Alert = () => {
     const { isOpen, severity, message } = useSelector((store) => store.alert);
 
     return (
-        <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={isOpen} onClose={() => dispatch(closeAlert())}>
+        <Snackbar
+            autoHideDuration={severity === 'success' ? 1000 : 3000}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            open={isOpen}
+            onClose={() => dispatch(closeAlert())}
+        >
             <MuiAlert
                 variant="filled"
                 severity={severity}

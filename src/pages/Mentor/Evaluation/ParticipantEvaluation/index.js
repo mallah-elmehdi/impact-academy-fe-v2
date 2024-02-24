@@ -1,12 +1,32 @@
-import { Box, Grid, Typography } from '@mui/material';
-import React from 'react';
-import { DashboardTitle, DividerLine, LinedTitle, Slider } from '../../../../components';
+import { Box, Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { DashboardTitle } from '../../../../components';
 import { MENTOR_NAVBAR } from '../../../../constants/mentor';
-import { Accordion, AccordionDetails, AccordionSummary } from '../../../../components/Accordion';
+import { WORKSHOPS } from '../../../../constants/programme';
+import { evaluationsByParticipant } from '../../../../contexts/evaluation/apis';
+import { getEvaluationsByWorkshop } from '../../../../utils/functions';
+import Workshop1 from './Workshop1';
 
 const ParticipantEvaluation = () => {
-    const [expanded, setExpanded] = React.useState('workshop1');
+    const dispatch = useDispatch();
+    const { evaluationByParticipant } = useSelector((store) => store.evaluation);
+
+    const [expanded, setExpanded] = React.useState(null);
     const handleChange = (panel) => (event, newExpanded) => setExpanded(newExpanded ? panel : false);
+
+    const [evaluations, setEvaluations] = useState([]);
+
+    const { participantId } = useParams();
+
+    useEffect(() => {
+        dispatch(evaluationsByParticipant(participantId));
+    }, [participantId]);
+
+    useEffect(() => {
+        setEvaluations(getEvaluationsByWorkshop(evaluationByParticipant, WORKSHOPS[0].workshop));
+    }, [evaluationByParticipant]);
 
     return (
         <Box>
@@ -15,55 +35,7 @@ const ParticipantEvaluation = () => {
                     <DashboardTitle>{`${MENTOR_NAVBAR[1].title} | El Mehdi Mallah`}</DashboardTitle>
                 </Grid>
                 <Grid item xs={12}>
-                    <Accordion expanded={expanded === 'workshop1'} onChange={handleChange('workshop1')}>
-                        <AccordionSummary aria-controls="workshop1d-content" id="workshop1d-header">
-                            <Typography
-                                sx={(theme) => ({
-                                    fontSize: theme.fontSize.lg,
-                                    color: theme.palette.common.black,
-                                    textTransform: 'capitalize',
-                                })}
-                            >
-                                Workshop 1
-                            </Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                            <Grid container spacing={2} alignItems="center">
-                                <Grid item md={6}>
-                                    <Typography
-                                        sx={(theme) => ({
-                                            fontSize: theme.fontSize.lg,
-                                            color: theme.palette.common.black,
-                                            textTransform: 'capitalize',
-                                        })}
-                                    >
-                                        CRT 1
-                                    </Typography>
-                                </Grid>
-                                <Grid item md={6}>
-                                    <Slider valueLabelDisplay="auto" step={0.25} marks min={0} max={5} />
-                                </Grid>
-                            </Grid>
-                            <DividerLine sx={{ my: 3 }} color="muted" />
-                            <Grid container spacing={2} alignItems="center">
-                                <Grid item md={6}>
-                                    <Typography
-                                        sx={(theme) => ({
-                                            fontSize: theme.fontSize.lg,
-                                            color: theme.palette.common.black,
-                                            textTransform: 'capitalize',
-                                        })}
-                                    >
-                                        CRT 1
-                                    </Typography>
-                                </Grid>
-                                <Grid item md={6}>
-                                    <Slider valueLabelDisplay="auto" step={0.25} marks min={0} max={5} />
-                                </Grid>
-                            </Grid>
-                        </AccordionDetails>
-                    </Accordion>
+                    <Workshop1 evaluations={evaluations} participantId={participantId} handleChange={handleChange} expanded={expanded} />
                 </Grid>
             </Grid>
         </Box>

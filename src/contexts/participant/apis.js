@@ -8,3 +8,9 @@ export const participantAll = createAsyncThunk('participant', async (_, { dispat
         return await client.get(URLS.PARTICIPANT_ALL);
     });
 });
+
+export const participantByMentor = createAsyncThunk('participantByMentor', async (_, { dispatch }) => {
+    return wrapper()(dispatch, async () => {
+        return await client.get(URLS.PARTICIPANT_BY_MENTOR);
+    });
+});

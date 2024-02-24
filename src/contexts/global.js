@@ -5,6 +5,12 @@ export const wrapper = () => async (dispatch, cb) => {
     try {
         dispatch(startLoading());
         const response = await cb();
+        dispatch(
+            openAlert({
+                severity: 'success',
+                message: 'Opération réussie',
+            })
+        );
         return response.data;
     } catch (error) {
         dispatch(

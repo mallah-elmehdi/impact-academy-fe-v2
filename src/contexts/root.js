@@ -7,6 +7,7 @@ import provinceReducer from './province/slice';
 import groupReducer from './group/slice';
 import mentorReducer from './mentor/slice';
 import participantReducer from './participant/slice';
+import evaluationReducer from './evaluation/slice';
 
 const rootReducer = combineReducers({
     loader: loaderReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     group: groupReducer,
     mentor: mentorReducer,
     participant: participantReducer,
+    evaluation: evaluationReducer,
 });
 
 export default rootReducer;

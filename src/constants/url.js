@@ -15,7 +15,12 @@ export const URLS = {
     MENTOR_ALL: '/mentor/all',
     MENTOR: '/mentor',
 
-     // PARTICIPANT
-     PARTICIPANT_ALL: '/participant/all',
-     PARTICIPANT: '/participant',
+    // PARTICIPANT
+    PARTICIPANT_ALL: '/participant/all',
+    PARTICIPANT_BY_MENTOR: '/participant/by-mentor',
+    PARTICIPANT: '/participant',
+
+    // EVALUATION
+    EVALUATION_BY_PARTICIPANT: '/evaluation/by-participant',
+    EVALUATION: '/evaluation',
 };
