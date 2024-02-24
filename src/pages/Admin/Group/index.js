@@ -83,7 +83,7 @@ const Group = () => {
                     </Filter>
                 </Grid>
                 <Grid item xs={12}>
-                    {groupsFiltered.length === 0 ? (
+                    {groupsFiltered && groupsFiltered.length === 0 ? (
                         <NoData />
                     ) : (
                         <TableContainer component={BorderedCard}>

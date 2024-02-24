@@ -8,3 +8,9 @@ export const mentorAll = createAsyncThunk('mentor', async (_, { dispatch }) => {
         return await client.get(URLS.MENTOR_ALL);
     });
 });
+
+export const mentorProfile = createAsyncThunk('mentorProfile', async (_, { dispatch }) => {
+    return wrapper()(dispatch, async () => {
+        return await client.get(URLS.MENTOR_PROFILE);
+    });
+});

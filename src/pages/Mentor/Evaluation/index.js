@@ -1,19 +1,13 @@
 import { Box, Grid, Table, TableBody, TableContainer, TableHead } from '@mui/material';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { BorderedCard, DashboardTitle, Link, SmallButton } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
 import { MENTOR_NAVBAR } from '../../../constants/mentor';
-import { useSelector, useDispatch } from 'react-redux';
-import { participantByMentor } from '../../../contexts/participant/apis';
 import { totalScore } from '../../../utils/functions';
 
 const Evaluation = () => {
-    const dispatch = useDispatch();
     const { participants } = useSelector((store) => store.participant);
-
-    useEffect(() => {
-        dispatch(participantByMentor());
-    }, []);
 
     return (
         <Box>

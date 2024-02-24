@@ -13,6 +13,7 @@ export const URLS = {
 
     // MENTOR
     MENTOR_ALL: '/mentor/all',
+    MENTOR_PROFILE: '/mentor/profile',
     MENTOR: '/mentor',
 
     // PARTICIPANT
@@ -23,4 +24,9 @@ export const URLS = {
     // EVALUATION
     EVALUATION_BY_PARTICIPANT: '/evaluation/by-participant',
     EVALUATION: '/evaluation',
+
+    // EVALUATION
+    PRESENCES_BY_WORKSHOP_AND_GROUP: '/presence/by-workshop-and-group',
+    PRESENCES_BY_MENTOR: '/presence/by-mentor',
+    PRESENCES: '/presence',
 };

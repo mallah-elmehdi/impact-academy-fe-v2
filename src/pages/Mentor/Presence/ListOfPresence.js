@@ -1,10 +1,14 @@
 import { Table, TableBody, TableContainer, TableHead } from '@mui/material';
 import React from 'react';
+import { BsEye } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import { BorderedCard, ButtonDialog, FilledIconButton, Tag } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
-import { BsEye } from 'react-icons/bs';
+import { isPresent } from '../../../utils/functions';
 
-const ListOfPresence = () => {
+const ListOfPresence = ({ presenceList }) => {
+    const { participants } = useSelector((store) => store.participant);
+
     return (
         <ButtonDialog
             title="Liste de présence"
@@ -24,18 +28,21 @@ const ListOfPresence = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {[1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
-                            <TableRow>
-                                <TableCell>El Mehdi Mallah</TableCell>
-                                <TableCell>
-                                    {index % 5 ? (
-                                        <Tag color="success" label="Présent (e)" lowercase />
-                                    ) : (
-                                        <Tag lowercase color="error" label="Absent (e)" />
-                                    )}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        {participants &&
+                            participants.map((item, index) => (
+                                <TableRow key={item.id}>
+                                    <TableCell>
+                                        {item.firstname} {item.lastname}
+                                    </TableCell>
+                                    <TableCell>
+                                        {isPresent(item.id, presenceList) ? (
+                                            <Tag color="success" label="Présent (e)" lowercase />
+                                        ) : (
+                                            <Tag lowercase color="error" label="Absent (e)" />
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>

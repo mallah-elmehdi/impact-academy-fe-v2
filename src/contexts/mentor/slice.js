@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { mentorAll } from './apis';
+import { mentorAll, mentorProfile } from './apis';
 
 const initialState = {
     mentors: [],
+    profile: null,
 };
 
 const mentor = createSlice({
@@ -10,9 +11,13 @@ const mentor = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(mentorAll.fulfilled, (state, { payload }) => {
-            state.mentors = payload;
-        });
+        builder
+            .addCase(mentorAll.fulfilled, (state, { payload }) => {
+                state.mentors = payload;
+            })
+            .addCase(mentorProfile.fulfilled, (state, { payload }) => {
+                state.profile = payload;
+            });
     },
 });
 

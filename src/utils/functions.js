@@ -75,3 +75,7 @@ export const getEvaluationsIdByWorkshopAndCriteria = (evaluations, criteria, wor
     const criteriaItem = evaluations.filter((item) => item.criteria === criteria && item.workshop === workshop)[0];
     return criteriaItem ? criteriaItem.id : null;
 };
+
+export const isPresent = (participantId, presenceList) => {
+    return presenceList.find((item) => participantId === item.id);
+};

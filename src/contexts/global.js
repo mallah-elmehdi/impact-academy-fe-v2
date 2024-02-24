@@ -16,7 +16,7 @@ export const wrapper = () => async (dispatch, cb) => {
         dispatch(
             openAlert({
                 severity: 'error',
-                message: error?.message,
+                message: 'Opération échoue',
             })
         );
         return error;

@@ -128,7 +128,7 @@ const Participant = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    {participantsFiltered.length === 0 ? (
+                    {participantsFiltered && participantsFiltered.length === 0 ? (
                         <NoData />
                     ) : (
                         <TableContainer component={BorderedCard}>

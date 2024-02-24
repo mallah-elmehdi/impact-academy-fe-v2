@@ -8,6 +8,7 @@ import groupReducer from './group/slice';
 import mentorReducer from './mentor/slice';
 import participantReducer from './participant/slice';
 import evaluationReducer from './evaluation/slice';
+import presenceReducer from './presence/slice';
 
 const rootReducer = combineReducers({
     loader: loaderReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     mentor: mentorReducer,
     participant: participantReducer,
     evaluation: evaluationReducer,
+    presence: presenceReducer,
 });
 
 export default rootReducer;

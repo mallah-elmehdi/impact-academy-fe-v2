@@ -127,7 +127,7 @@ const Mentor = () => {
                     </Stack>
                 </Grid>
                 <Grid item xs={12}>
-                    {mentorsFiltered.length === 0 ? (
+                    {mentorsFiltered && mentorsFiltered.length === 0 ? (
                         <NoData />
                     ) : (
                         <TableContainer component={BorderedCard}>
