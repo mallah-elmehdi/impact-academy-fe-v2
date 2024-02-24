@@ -3,8 +3,15 @@ import React from 'react';
 import { BsGeoAlt, BsPerson } from 'react-icons/bs';
 import { Card, DividerVertical, IconText, ProgressLevel } from '../../../components';
 import UpdateProfile from './UpdateProfile';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfileScore } from '../../../utils/functions';
+import { LevelColor, LevelTextColor } from '../../../components/ScoreCard';
 
 const Header = () => {
+    const { profile } = useSelector((store) => store.participant);
+
+    const value = getProfileScore(profile);
+
     return (
         <Card>
             <Grid container spacing={2}>
@@ -18,7 +25,8 @@ const Header = () => {
                         >
                             Complétez votre profil
                         </Typography>
-                        <ProgressLevel color="secondary" value={40} />
+
+                        <ProgressLevel white={LevelTextColor(value)} color={LevelColor(value)} value={value} />
                     </Stack>
                 </Grid>
                 <Grid item md={0.25} xs={12}>
@@ -27,8 +35,8 @@ const Header = () => {
                 <Grid item md={7.5} sm={8} xs={12}>
                     <Stack spacing={1}>
                         <Box display="flex" alignItems="center" gap={2}>
-                            <IconText icon={<BsGeoAlt />} text="Ben Guerir" />
-                            <IconText icon={<BsPerson />} text="elmehdimallah" />
+                            <IconText icon={<BsGeoAlt />} text={profile?.province?.name} />
+                            <IconText icon={<BsPerson />} text={profile?.user?.username} />
                         </Box>
                         <Typography
                             sx={(theme) => ({
@@ -38,7 +46,7 @@ const Header = () => {
                                 textTransform: 'capitalize',
                             })}
                         >
-                            el mehdi mallah
+                            {profile.firstname} {profile.lastname}
                         </Typography>
                     </Stack>
                 </Grid>

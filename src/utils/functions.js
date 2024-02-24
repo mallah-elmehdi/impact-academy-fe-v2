@@ -84,3 +84,23 @@ export const getEvaluationsIdByWorkshopAndCriteria = (evaluations, criteria, wor
 export const isPresent = (participantId, presenceList) => {
     return presenceList.find((item) => participantId === item.id);
 };
+
+export const getProfileScore = (profile) => {
+    let score = 0;
+    if (profile) {
+        score += profile.firstname ? 1 : 0;
+        score += profile.lastname ? 1 : 0;
+        score += profile.zone ? 1 : 0;
+        score += profile.city ? 1 : 0;
+        score += profile.phone ? 1 : 0;
+        score += profile.email ? 1 : 0;
+        score += profile.educationLevel ? 1 : 0;
+        score += profile.speciality ? 1 : 0;
+        score += profile.jobDomain ? 1 : 0;
+        score += profile.orientation ? 1 : 0;
+        score += profile.isWorking ? 1 : 0;
+        score += profile.yearsOfExperience ? 1 : 0;
+    }
+
+    return Math.ceil((score / 12) * 100)
+};

@@ -59,7 +59,7 @@ export const PROFILE_PERSONNEL = [
 export const PROFILE_PROFESSIONAL = [
     {
         title: "Quel est votre niveau d'etude?",
-        obj: 'education_level',
+        obj: 'educationLevel',
     },
     {
         title: 'Quelle est votre spécialité?',
@@ -67,16 +67,16 @@ export const PROFILE_PROFESSIONAL = [
     },
     {
         title: 'Est-ce que vous occupez un poste actuellement?',
-        obj: 'is_working',
+        obj: 'isWorking',
         bool: true,
     },
     {
         title: "Quel est votre secteur d'activité?",
-        obj: 'job_domain',
+        obj: 'jobDomain',
     },
     {
         title: "Nombre d'Année d'expérience",
-        obj: 'years_of_experience',
+        obj: 'yearsOfExperience',
         enum: [
             {
                 title: 'LT_1',

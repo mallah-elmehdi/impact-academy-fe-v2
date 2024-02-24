@@ -2,9 +2,11 @@ import { Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Card } from '../../../components';
 import { PROFILE_PROFESSIONAL } from '../../../constants/participant';
+import { useDispatch, useSelector } from 'react-redux';
 
 const InfoProfessional = () => {
-    const profile = null;
+    const { profile } = useSelector((store) => store.participant);
+
     return (
         <Card>
             <Grid container spacing={3}>
@@ -40,7 +42,7 @@ const InfoProfessional = () => {
                                         textTransform: 'uppercase',
                                     })}
                                 >
-                                    {profile ? (profile[item.obj] ? 'non' : 'oui') : '-'}
+                                    {profile ? (profile[item.obj] === true ? 'oui' : profile[item.obj] === false ? 'non' : '-') : '-'}
                                 </Typography>
                             ) : item.enum ? (
                                 <Typography

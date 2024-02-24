@@ -4,7 +4,7 @@ import { BsMortarboard, BsX } from 'react-icons/bs';
 import { Input } from '../../../../components';
 import { JOB_DOMAIN } from '../../../../constants/participant';
 
-const Other = ({ field, errors, setValue }) => {
+const Other = ({ field, errors, setValue, profile }) => {
     const [autre, setAutre] = useState();
 
     return (
@@ -17,12 +17,12 @@ const Other = ({ field, errors, setValue }) => {
                     options={JOB_DOMAIN.map((option) => option)}
                     getOptionLabel={(option) => option}
                     sx={{ width: '100%' }}
-                    // defaultValue={profile?.job_domain}
+                    defaultValue={profile?.jobDomain}
                     onChange={(event, values) => {
                         if (values === 'Autre') setAutre(true);
                         else {
                             setAutre(false);
-                            setValue('job_domain', values);
+                            setValue('jobDomain', values);
                         }
                     }}
                     renderInput={(params) => {
@@ -30,8 +30,8 @@ const Other = ({ field, errors, setValue }) => {
                             <Input
                                 {...field}
                                 {...params}
-                                error={errors.job_domain ? true : false}
-                                helperText={errors.job_domain ? errors.job_domain.message : ''}
+                                error={errors.jobDomain ? true : false}
+                                helperText={errors.jobDomain ? errors.jobDomain.message : ''}
                                 label="Quel est votre secteur d'activité?"
                                 placeholder="Quel est votre secteur d'activité?"
                                 InputProps={{
@@ -56,8 +56,8 @@ const Other = ({ field, errors, setValue }) => {
                 <Box display="flex" alignItems="center" gap={1}>
                     <Input
                         {...field}
-                        error={errors.job_domain ? true : false}
-                        helperText={errors.job_domain ? errors.job_domain.message : ''}
+                        error={errors.jobDomain ? true : false}
+                        helperText={errors.jobDomain ? errors.jobDomain.message : ''}
                         label="Quel est votre secteur d'activité?"
                         placeholder="Quel est votre secteur d'activité?"
                         iconStart={<BsMortarboard />}

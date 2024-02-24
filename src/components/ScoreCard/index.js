@@ -2,7 +2,7 @@ import { Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Card, DividerVertical, ProgressLevel } from '..';
 
-const LevelColor = (value) => {
+export const LevelColor = (value) => {
     if (value > 60) {
         return 'success';
     } else if (value > 40) {
@@ -11,7 +11,7 @@ const LevelColor = (value) => {
     return 'error';
 };
 
-const LevelTextColor = (value) => {
+export const LevelTextColor = (value) => {
     if (value > 60) {
         return true;
     }
@@ -22,7 +22,7 @@ const ScoreCard = ({ title, value, children, action }) => {
     return (
         <Card>
             <Grid container spacing={2}>
-                <Grid item sm={4}  xs={12}>
+                <Grid item sm={4} xs={12}>
                     <Stack sx={{ height: '100%' }} spacing={2}>
                         <Typography
                             sx={(theme) => ({
@@ -37,10 +37,10 @@ const ScoreCard = ({ title, value, children, action }) => {
                         <ProgressLevel white={LevelTextColor(value)} color={LevelColor(value)} value={value} />
                     </Stack>
                 </Grid>
-                <Grid item sm={0.5}  xs={12}>
+                <Grid item sm={0.5} xs={12}>
                     <DividerVertical />
                 </Grid>
-                <Grid item sm={4.5}  xs={12} sx={{ alignSelf: 'center' }}>
+                <Grid item sm={4.5} xs={12} sx={{ alignSelf: 'center' }}>
                     {children}
                 </Grid>
                 {action && (

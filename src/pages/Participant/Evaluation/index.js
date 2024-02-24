@@ -1,18 +1,16 @@
-import { Stack, Box, Grid } from '@mui/material';
+import { Box, Grid, Stack } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { DashboardTitle, LinedTitle } from '../../../components';
 import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
+import { COACHING, INSERTION_PROFESSIONNELLE, WORKSHOPS } from '../../../constants/programme';
 import {
-    calculateTheScoreEvaluation,
-    getEvaluationsByCoaching,
     getEvaluationsByWorkshop,
     scoreLevel,
-    totalScore,
+    totalScore
 } from '../../../utils/functions';
 import EvaluationCard from './EvaluationCard';
 import EvaluationDetails from './EvaluationDetails';
-import { COACHING, INSERTION_PROFESSIONNELLE, WORKSHOPS } from '../../../constants/programme';
-import { useSelector } from 'react-redux';
 
 const dataCoaching = [
     {

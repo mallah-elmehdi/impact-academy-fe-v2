@@ -1,13 +1,16 @@
 import { Box, Grid } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { DashboardTitle, DividerLine, Files } from '../../../components';
+import { DashboardTitle, DividerLine, Files, LinedTitle } from '../../../components';
 import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
 import Header from './Header';
 import InfoPersonnel from './InfoPersonnel';
 import InfoProfessional from './InfoProfessional';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Profile = () => {
+    const { profile } = useSelector((store) => store.participant);
+
     const {
         formState: { errors },
         handleSubmit,
@@ -52,8 +55,9 @@ const Profile = () => {
                     <InfoProfessional />
                 </Grid>
                 <Grid item xs={12}>
-                    <DividerLine color="secondary" />
+                    <LinedTitle color="secondary">mes fichiers</LinedTitle>
                 </Grid>
+
                 <Grid item xs={12}>
                     <Files />
                 </Grid>

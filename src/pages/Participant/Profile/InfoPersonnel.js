@@ -2,9 +2,11 @@ import { Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Card } from '../../../components';
 import { PROFILE_PERSONNEL } from '../../../constants/participant';
+import { useDispatch, useSelector } from 'react-redux';
 
 const InfoPersonnel = () => {
-    const profile = null;
+    const { profile } = useSelector((store) => store.participant);
+
     return (
         <Card>
             <Grid container spacing={3}>

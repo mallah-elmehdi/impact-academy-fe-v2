@@ -9,14 +9,19 @@ import {
     Radio,
     RadioGroup,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { BsEnvelope, BsGeoAlt, BsMortarboard, BsPerson, BsPhone } from 'react-icons/bs';
 import { Button, ButtonDialog, Input } from '../../../../components';
 import { EDUCATION_LEVEL, ORIENTATION, ZONE } from '../../../../constants/participant';
 import Other from './Other';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateParticipantProfile } from '../../../../apis/participant';
 
 const UpdateProfile = () => {
+    const { profile } = useSelector((store) => store.participant);
+    const dispatch = useDispatch();
+
     const {
         formState: { errors },
         handleSubmit,
@@ -25,17 +30,17 @@ const UpdateProfile = () => {
         setValue,
     } = useForm({
         defaultValues: {
-            first_name: '',
-            last_name: '',
+            firstname: '',
+            lastname: '',
             zone: '',
             city: '',
             phone: '',
             email: '',
-            education_level: '',
+            educationLevel: '',
             speciality: '',
-            is_working: '',
-            job_domain: '',
-            years_of_experience: '',
+            isWorking: false,
+            jobDomain: '',
+            yearsOfExperience: '',
             orientation: '',
         },
     });
@@ -43,14 +48,32 @@ const UpdateProfile = () => {
     // ===== submit
     const onSubmit = (data, event) => {
         event.preventDefault();
+        dispatch(updateParticipantProfile({ ...data, isWorking: Boolean(data.isWorking) }));
     };
+
+    useEffect(() => {
+        if (profile) {
+            setValue('firstname', profile.firstname);
+            setValue('lastname', profile.lastname);
+            setValue('zone', profile.zone);
+            setValue('city', profile.city);
+            setValue('phone', profile.phone);
+            setValue('email', profile.email);
+            setValue('educationLevel', profile.educationLevel);
+            setValue('speciality', profile.speciality);
+            setValue('isWorking', profile.isWorking);
+            setValue('jobDomain', profile.jobDomain);
+            setValue('yearsOfExperience', profile.yearsOfExperience);
+            setValue('orientation', profile.orientation);
+        }
+    }, [profile]);
 
     return (
         <ButtonDialog
             title="Modifier le profil"
             buttonTitle="Modifier"
             action={(close) => (
-                <Button type="submit" onClick={close} form="edit-profile-student">
+                <Button type="submit" form="edit-profile-student">
                     Modifier
                 </Button>
             )}
@@ -60,15 +83,15 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="first_name"
+                            name="firstname"
                             rules={{
                                 required: { value: true, message: 'Nom est obligatoire' },
                             }}
                             render={({ field }) => (
                                 <Input
-                                    error={errors.first_name ? true : false}
+                                    error={errors.firstname ? true : false}
                                     {...field}
-                                    helperText={errors.first_name ? errors.first_name.message : ''}
+                                    helperText={errors.firstname ? errors.firstname.message : ''}
                                     type="text"
                                     label="Nom"
                                     placeholder="Nom"
@@ -80,15 +103,15 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="last_name"
+                            name="lastname"
                             rules={{
                                 required: { value: true, message: 'Prénom est obligatoire' },
                             }}
                             render={({ field }) => (
                                 <Input
-                                    error={errors.last_name ? true : false}
+                                    error={errors.lastname ? true : false}
                                     {...field}
-                                    helperText={errors.last_name ? errors.last_name.message : ''}
+                                    helperText={errors.lastname ? errors.lastname.message : ''}
                                     type="text"
                                     label="Prénom"
                                     placeholder="Prénom"
@@ -111,7 +134,7 @@ const UpdateProfile = () => {
                                     isOptionEqualToValue={(option, value) => option === value}
                                     options={ZONE.map((option) => option)}
                                     getOptionLabel={(option) => option}
-                                    // defaultValue={profile?.zone}
+                                    defaultValue={profile?.zone}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
                                         setValue('zone', values);
@@ -211,7 +234,7 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="education_level"
+                            name="educationLevel"
                             rules={{
                                 required: { value: true, message: 'Champ est obligatoire' },
                             }}
@@ -222,18 +245,18 @@ const UpdateProfile = () => {
                                     isOptionEqualToValue={(option, value) => option === value}
                                     options={EDUCATION_LEVEL.map((option) => option)}
                                     getOptionLabel={(option) => option}
-                                    // defaultValue={profile?.education_level}
+                                    defaultValue={profile?.educationLevel}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
-                                        setValue('education_level', values);
+                                        setValue('educationLevel', values);
                                     }}
                                     renderInput={(params) => {
                                         return (
                                             <Input
                                                 {...field}
                                                 {...params}
-                                                error={errors.education_level ? true : false}
-                                                helperText={errors.education_level ? errors.education_level.message : ''}
+                                                error={errors.educationLevel ? true : false}
+                                                helperText={errors.educationLevel ? errors.educationLevel.message : ''}
                                                 label="Quel est votre niveau d'etude?"
                                                 placeholder="Quel est votre niveau d'etude?"
                                                 InputProps={{
@@ -281,26 +304,26 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="is_working"
+                            name="isWorking"
                             rules={{
                                 required: { value: true, message: 'Champ est obligatoire' },
                             }}
                             render={({ field }) => (
-                                <FormControl error={errors.is_working ? true : false}>
+                                <FormControl error={errors.isWorking ? true : false}>
                                     <FormLabel
                                         sx={(theme) => ({
                                             fontSize: theme.fontSize.xs,
                                             color: theme.palette.common.grey,
                                         })}
-                                        id="is_working"
+                                        id="isWorking"
                                     >
                                         Est-ce que vous occupez un poste actuellement?
                                     </FormLabel>
-                                    <RadioGroup {...field} aria-labelledby="is_working" defaultValue={true}>
+                                    <RadioGroup {...field} aria-labelledby="isWorking" defaultValue={true}>
                                         <FormControlLabel value={true} control={<Radio />} label="Oui" />
                                         <FormControlLabel value={false} control={<Radio />} label="Non" />
                                     </RadioGroup>
-                                    {errors.is_working && <FormHelperText>{errors.is_working.message}</FormHelperText>}
+                                    {errors.isWorking && <FormHelperText>{errors.isWorking.message}</FormHelperText>}
                                 </FormControl>
                             )}
                         />
@@ -308,28 +331,28 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="years_of_experience"
+                            name="yearsOfExperience"
                             rules={{
                                 required: { value: true, message: 'Champ est obligatoire' },
                             }}
                             render={({ field }) => (
-                                <FormControl error={errors.years_of_experience ? true : false}>
+                                <FormControl error={errors.yearsOfExperience ? true : false}>
                                     <FormLabel
                                         sx={(theme) => ({
                                             fontSize: theme.fontSize.xs,
                                             color: theme.palette.common.grey,
                                         })}
-                                        id="years_of_experience"
+                                        id="yearsOfExperience"
                                     >
                                         Nombre d'Année d'expérience
                                     </FormLabel>
-                                    <RadioGroup {...field} aria-labelledby="years_of_experience" defaultValue={true}>
+                                    <RadioGroup {...field} aria-labelledby="yearsOfExperience" defaultValue={true}>
                                         <FormControlLabel value="LT_1" control={<Radio />} label="< 1 an" />
                                         <FormControlLabel value="BW_1_3" control={<Radio />} label="1 an - 3 ans" />
                                         <FormControlLabel value="BW_3_5" control={<Radio />} label="3 ans - 5 ans" />
                                         <FormControlLabel value="GT_5" control={<Radio />} label="> 5 ans" />
                                     </RadioGroup>
-                                    {errors.years_of_experience && <FormHelperText>{errors.years_of_experience.message}</FormHelperText>}
+                                    {errors.yearsOfExperience && <FormHelperText>{errors.yearsOfExperience.message}</FormHelperText>}
                                 </FormControl>
                             )}
                         />
@@ -338,11 +361,11 @@ const UpdateProfile = () => {
                     <Grid item md={6} xs={12}>
                         <Controller
                             control={control}
-                            name="job_domain"
+                            name="jobDomain"
                             rules={{
                                 required: { value: true, message: 'Champ est obligatoire' },
                             }}
-                            render={({ field }) => <Other errors={errors} field={field} setValue={setValue} />}
+                            render={({ field }) => <Other profile={profile} errors={errors} field={field} setValue={setValue} />}
                         />
                     </Grid>
 
@@ -359,7 +382,7 @@ const UpdateProfile = () => {
                                     autoHighlight
                                     isOptionEqualToValue={(option, value) => option === value}
                                     options={ORIENTATION.map((option) => option)}
-                                    // defaultValue={profile?.orientation}
+                                    defaultValue={profile?.orientation}
                                     getOptionLabel={(option) => option}
                                     sx={{ width: '100%' }}
                                     onChange={(event, values) => {
