@@ -1,11 +1,11 @@
 import { Table, TableBody, TableContainer, TableHead } from '@mui/material';
 import React, { useEffect } from 'react';
 import { BsPencil } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePresence } from '../../../apis/presence';
 import { BorderedCard, Button, ButtonDialog, Checkbox, FilledIconButton } from '../../../components';
-import { useSelector, useDispatch } from 'react-redux';
 import { TableCell, TableRow } from '../../../components/Table';
 import { isPresent } from '../../../utils/functions';
-import { createPresence, updatePresence } from '../../../apis/presence';
 
 const getCheckedList = (presenceList, participants) => {
     return participants.map((item) => ({
@@ -24,11 +24,13 @@ const EditListOfPresence = ({ presenceList, presenceId }) => {
     };
 
     const handleSubmit = () => {
-        const participants = list.filter((item) => item.isPresent).map((item) => parseInt(item.id));
+        const participantsPresent = list.filter((item) => item.isPresent).map((item) => parseInt(item.id));
+        const participantsAbsent = list.filter((item) => !item.isPresent).map((item) => parseInt(item.id));
 
         dispatch(
             updatePresence({
-                participants,
+                participantsPresent,
+                participantsAbsent,
                 presenceId,
             })
         );
