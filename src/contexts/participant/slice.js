@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { participantAll, participantByMentor } from './apis';
+import { participantAll, participantByMentor, participantProfile } from './apis';
 
 const initialState = {
     participants: [],
+    profile: null,
 };
 
 const participant = createSlice({
@@ -16,6 +17,9 @@ const participant = createSlice({
             })
             .addCase(participantByMentor.fulfilled, (state, { payload }) => {
                 state.participants = payload;
+            })
+            .addCase(participantProfile.fulfilled, (state, { payload }) => {
+                state.profile = payload;
             });
     },
 });

@@ -71,6 +71,11 @@ export const getScoreByCriteria = (evaluations, criteria) => {
     return criteriaItem ? criteriaItem.score : 0;
 };
 
+export const getScore = (evaluations) => {
+    const criteriaItem = evaluations[0];
+    return criteriaItem ? criteriaItem.score : 0;
+};
+
 export const getEvaluationsIdByWorkshopAndCriteria = (evaluations, criteria, workshop) => {
     const criteriaItem = evaluations.filter((item) => item.criteria === criteria && item.workshop === workshop)[0];
     return criteriaItem ? criteriaItem.id : null;

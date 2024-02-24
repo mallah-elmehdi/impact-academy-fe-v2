@@ -22,3 +22,21 @@ export const WORKSHOPS = [
         title: 'workshop 4',
     },
 ];
+
+export const COACHING = [
+    {
+        coaching: 'COACHING_1',
+        title: 'coaching 1',
+    },
+    {
+        coaching: 'COACHING_2',
+        title: 'coaching 2',
+    },
+];
+
+export const INSERTION_PROFESSIONNELLE = [
+    {
+        insertionProfessionnelle: 'INSERTION_PROFESSIONNELLE',
+        title: 'Insertion professionnelle',
+    },
+];

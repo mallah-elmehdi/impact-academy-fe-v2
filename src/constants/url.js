@@ -19,6 +19,7 @@ export const URLS = {
     // PARTICIPANT
     PARTICIPANT_ALL: '/participant/all',
     PARTICIPANT_BY_MENTOR: '/participant/by-mentor',
+    PARTICIPANT_PROFILE: '/participant/profile',
     PARTICIPANT: '/participant',
 
     // EVALUATION

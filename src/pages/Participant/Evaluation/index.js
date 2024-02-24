@@ -2,52 +2,17 @@ import { Stack, Box, Grid } from '@mui/material';
 import React from 'react';
 import { DashboardTitle, LinedTitle } from '../../../components';
 import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
-import { calculateTheScoreEvaluation, scoreLevel } from '../../../utils/functions';
+import {
+    calculateTheScoreEvaluation,
+    getEvaluationsByCoaching,
+    getEvaluationsByWorkshop,
+    scoreLevel,
+    totalScore,
+} from '../../../utils/functions';
 import EvaluationCard from './EvaluationCard';
 import EvaluationDetails from './EvaluationDetails';
-
-const data = [
-    {
-        workshop: 'Workshop 1',
-        evaluation: {
-            f1: 2.75,
-            f2: 3.25,
-            f3: 5,
-            f4: 1.25,
-            f5: 5,
-        },
-    },
-    {
-        workshop: 'Workshop 2',
-        evaluation: {
-            f1: 0.25,
-            f2: 1.5,
-            f3: 2.75,
-            f4: 4.25,
-            f5: 5,
-        },
-    },
-    {
-        workshop: 'Workshop 3',
-        evaluation: {
-            f1: 3,
-            f2: 2.5,
-            f3: 3.75,
-            f4: 2.25,
-            f5: 3.5,
-        },
-    },
-    {
-        workshop: 'Workshop 4',
-        evaluation: {
-            f1: 4,
-            f2: 4.25,
-            f3: 3.75,
-            f4: 4,
-            f5: 3.5,
-        },
-    },
-];
+import { COACHING, INSERTION_PROFESSIONNELLE, WORKSHOPS } from '../../../constants/programme';
+import { useSelector } from 'react-redux';
 
 const dataCoaching = [
     {
@@ -61,23 +26,28 @@ const dataCoaching = [
 ];
 
 const Evaluation = () => {
+    const { profile } = useSelector((store) => store.participant);
+
     return (
         <Stack spacing={3}>
             <DashboardTitle>{PARTICIPANT_NAVBAR[3].title}</DashboardTitle>
             <LinedTitle color="secondary">workshops</LinedTitle>
             <Box>
                 <Grid container spacing={3}>
-                    {data.map((item) => {
-                        const score = calculateTheScoreEvaluation(item.evaluation);
+                    {WORKSHOPS.map((item) => {
+                        const evaluations = profile ? getEvaluationsByWorkshop(profile.evaluations, item.workshop) : [];
+                        const score = totalScore(evaluations);
                         const globalValue = scoreLevel(score);
 
                         return (
                             <Grid item md={6} xs={12} key={item.workshop}>
                                 <EvaluationCard
-                                    title={item.workshop}
+                                    title={item.title}
                                     value={globalValue}
                                     score={score}
-                                    action={<EvaluationDetails workshop={item.workshop} data={item.evaluation} />}
+                                    action={
+                                        evaluations.length !== 0 && <EvaluationDetails workshop={item.title} evaluations={evaluations} />
+                                    }
                                 />
                             </Grid>
                         );
@@ -87,12 +57,14 @@ const Evaluation = () => {
             <LinedTitle color="secondary">Coaching</LinedTitle>
             <Box>
                 <Grid container spacing={3}>
-                    {dataCoaching.map((item) => {
-                        const globalValue = scoreLevel(item.score);
+                    {COACHING.map((item) => {
+                        const evaluations = profile ? getEvaluationsByWorkshop(profile.evaluations, item.coaching) : [];
+                        const score = totalScore(evaluations);
+                        const globalValue = scoreLevel(score);
 
                         return (
                             <Grid item md={6} xs={12} key={item.coaching}>
-                                <EvaluationCard title={item.coaching} value={globalValue} score={item.score} />
+                                <EvaluationCard title={item.title} value={globalValue} score={score} />
                             </Grid>
                         );
                     })}
@@ -101,9 +73,17 @@ const Evaluation = () => {
             <LinedTitle color="secondary">Insertion professionnelle</LinedTitle>
             <Box>
                 <Grid container spacing={3}>
-                    <Grid item md={6} xs={12}>
-                        <EvaluationCard title="Insertion professionnelle" value={scoreLevel(5)} score={5} />
-                    </Grid>
+                    {INSERTION_PROFESSIONNELLE.map((item) => {
+                        const evaluations = profile ? getEvaluationsByWorkshop(profile.evaluations, item.insertionProfessionnelle) : [];
+                        const score = totalScore(evaluations);
+                        const globalValue = scoreLevel(score);
+
+                        return (
+                            <Grid item md={6} xs={12} key={item.coaching}>
+                                <EvaluationCard title={item.title} value={globalValue} score={score} />
+                            </Grid>
+                        );
+                    })}
                 </Grid>
             </Box>
         </Stack>

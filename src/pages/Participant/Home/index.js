@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { BsCheck, BsListCheck, BsQuestion } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import { ButtonLink, DashboardCard, DashboardTitle, IconAvatar, Score } from '../../../components';
 import { PresenceChart, QuizChart } from '../../../components/Charts';
 import EvaluationChart from '../../../components/Charts/EvaluationChart';
@@ -8,6 +9,8 @@ import { PAGES } from '../../../constants/pages';
 import { PARTICIPANT_NAVBAR } from '../../../constants/participant';
 
 const Home = () => {
+    const { profile } = useSelector((store) => store.participant);
+
     return (
         <Box>
             <Grid container spacing={3}>
@@ -25,7 +28,7 @@ const Home = () => {
                         title="Score d'évaluation"
                         action={<ButtonLink to={PAGES.participant.url + '/' + PAGES.participantEvaluation.url}>voir plus</ButtonLink>}
                     >
-                        <EvaluationChart />
+                        <EvaluationChart evaluations={profile ? profile.evaluations : []} />
                     </DashboardCard>
                 </Grid>
 
@@ -58,11 +61,7 @@ const Home = () => {
                         }
                         title="Taux de présence"
                     >
-                        <Box display="flex" gap={1} alignItems="center">
-                            <Typography component="span">Taux:</Typography>
-                            <Score isRate>90</Score>
-                        </Box>
-                        <PresenceChart rate={90} />
+                        <PresenceChart presence={profile ? profile.presence : []} />
                     </DashboardCard>
                 </Grid>
             </Grid>

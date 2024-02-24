@@ -14,3 +14,10 @@ export const participantByMentor = createAsyncThunk('participantByMentor', async
         return await client.get(URLS.PARTICIPANT_BY_MENTOR);
     });
 });
+
+export const participantProfile = createAsyncThunk('participantProfile', async (_, { dispatch }) => {
+    return wrapper()(dispatch, async () => {
+        return await client.get(URLS.PARTICIPANT_PROFILE);
+    });
+});
+

@@ -5,8 +5,10 @@ import { ResponsiveChartContainer } from '@mui/x-charts/ResponsiveChartContainer
 import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
 import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
 import { ChartsTooltip } from '@mui/x-charts/ChartsTooltip';
+import { getEvaluationsByWorkshop, totalScore } from '../../utils/functions';
+import { COACHING, INSERTION_PROFESSIONNELLE, WORKSHOPS } from '../../constants/programme';
 
-const EvaluationChart = ({ data }) => {
+const EvaluationChart = ({ evaluations }) => {
     const theme = useTheme();
 
     return (
@@ -14,7 +16,15 @@ const EvaluationChart = ({ data }) => {
             series={[
                 {
                     type: 'bar',
-                    data: [2, 5, 3, 4, 5, 2.75, 2],
+                    data: [
+                        totalScore(getEvaluationsByWorkshop(evaluations, WORKSHOPS[0].workshop)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, WORKSHOPS[1].workshop)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, COACHING[0].coaching)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, WORKSHOPS[2].workshop)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, WORKSHOPS[3].workshop)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, COACHING[1].coaching)),
+                        totalScore(getEvaluationsByWorkshop(evaluations, INSERTION_PROFESSIONNELLE[0].insertionProfessionnelle)),
+                    ],
                     label: 'score sur 5',
                 },
             ]}

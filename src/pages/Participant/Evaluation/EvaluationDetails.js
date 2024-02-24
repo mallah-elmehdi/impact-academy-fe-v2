@@ -3,7 +3,7 @@ import React from 'react';
 import { BorderedCard, ButtonDialog } from '../../../components';
 import { TableCell, TableRow } from '../../../components/Table';
 
-const EvaluationDetails = ({ workshop, data }) => {
+const EvaluationDetails = ({ workshop, evaluations }) => {
     return (
         <ButtonDialog smallButton title={workshop} buttonTitle="Détails">
             <Stack spacing={3}>
@@ -11,15 +11,15 @@ const EvaluationDetails = ({ workshop, data }) => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                {Object.keys(data).map((item) => (
-                                    <TableCell key={workshop + item}>{item}</TableCell>
+                                {evaluations.map((item) => (
+                                    <TableCell key={item.id}>{item.criteria}</TableCell>
                                 ))}
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             <TableRow>
-                                {Object.values(data).map((item) => (
-                                    <TableCell key={workshop + item}>{item}</TableCell>
+                                {evaluations.map((item) => (
+                                    <TableCell key={item.id}>{item.score}</TableCell>
                                 ))}
                             </TableRow>
                         </TableBody>
