@@ -19,7 +19,7 @@ export const wrapper = () => async (dispatch, cb) => {
                 message: 'Opération échoue',
             })
         );
-        return error;
+        return null;
     } finally {
         dispatch(finishLoading());
     }

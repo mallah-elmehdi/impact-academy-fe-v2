@@ -54,7 +54,11 @@ const ParticipantEvaluation = () => {
                         <Coaching
                             coaching={item.coaching}
                             title={item.title}
-                            evaluations={evaluationByParticipant.find((evaluation) => evaluation.workshop === item.coaching)}
+                            evaluations={
+                                evaluationByParticipant
+                                    ? evaluationByParticipant.find((evaluation) => evaluation.workshop === item.coaching)
+                                    : []
+                            }
                             participantId={participantId}
                             handleChange={handleChange}
                             expanded={expanded}
@@ -71,9 +75,11 @@ const ParticipantEvaluation = () => {
                         <Coaching
                             coaching={item.insertionProfessionnelle}
                             title={item.title}
-                            evaluations={evaluationByParticipant.find(
-                                (evaluation) => evaluation.workshop === item.insertionProfessionnelle
-                            )}
+                            evaluations={
+                                evaluationByParticipant
+                                    ? evaluationByParticipant.find((evaluation) => evaluation.workshop === item.insertionProfessionnelle)
+                                    : []
+                            }
                             participantId={participantId}
                             handleChange={handleChange}
                             expanded={expanded}

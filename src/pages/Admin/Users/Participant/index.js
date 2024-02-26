@@ -146,9 +146,9 @@ const Participant = () => {
                                         participantsFiltered.slice(start, end).map((item) => (
                                             <TableRow key={item.id}>
                                                 <TableCell>{item.firstname + ' ' + item.lastname}</TableCell>
-                                                <TableCell>{item.province.name}</TableCell>
-                                                <TableCell>{item.group.name}</TableCell>
-                                                <TableCell>{item.user.username}</TableCell>
+                                                <TableCell>{item?.province?.name}</TableCell>
+                                                <TableCell>{item?.group?.name}</TableCell>
+                                                <TableCell>{item?.user?.username}</TableCell>
                                             </TableRow>
                                         ))}
                                 </TableBody>

@@ -20,6 +20,8 @@ import {
     ParticipantQuiz,
     ParticipantQuizAnswers,
     ParticipantQuizDetails,
+    NotFound,
+    ErrorPage,
 } from '../pages';
 
 export default createBrowserRouter([
@@ -124,10 +126,9 @@ export default createBrowserRouter([
             // -------------- 404
             {
                 path: PAGES.notFound.url,
-                element: <>404</>,
-                // <Navigate to={PAGES.landing.url} />,
+                element: <NotFound />,
             },
         ],
-        errorElement: <div>ERROR</div>,
+        errorElement: <ErrorPage />,
     },
 ]);

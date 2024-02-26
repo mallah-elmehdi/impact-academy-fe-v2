@@ -145,7 +145,7 @@ const Mentor = () => {
                                         mentorsFiltered.slice(start, end).map((item) => (
                                             <TableRow key={item.id}>
                                                 <TableCell>{item.firstname + ' ' + item.lastname}</TableCell>
-                                                <TableCell>{item.province.name}</TableCell>
+                                                <TableCell>{item?.province?.name}</TableCell>
                                                 <TableCell>
                                                     {item.groups.map((group) => (
                                                         <>{group.name}</>

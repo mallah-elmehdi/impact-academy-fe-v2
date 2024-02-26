@@ -2,6 +2,8 @@ export { default as Base } from './Base';
 
 // ========== PUBLIC PAGES
 export { default as LogIn } from './LogIn';
+export { default as NotFound } from './NotFound';
+export { default as ErrorPage } from './ErrorPage';
 
 // ========== PARTICIPANT PAGES
 export { default as Participant } from './Participant';
